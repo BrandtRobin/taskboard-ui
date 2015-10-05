@@ -1,11 +1,16 @@
 'use strict';
 angular.module('taskboardApp')
-  .factory('workItemDb', function () {
-    var meaningOfLife = 42;
-
+  .factory('workItemDb', function ($http) {
+    var workItemServiceUrl = "http://localhost:8080/web-service/workitems/";
     return {
-      someMethod: function () {
-        return meaningOfLife;
+      getAll: function (teamId) {
+        return $http.get(workItemServiceUrl + 'team/' + teamId);
+      },
+      add: function (workItem) {
+        return $http.post(workItemServiceUrl, workItem);
+      },
+      delete: function (id) {
+        return $http.delete(workItemServiceUrl + 'id/' + id);
       }
     };
   });
