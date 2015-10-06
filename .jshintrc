@@ -11,6 +11,9 @@
   "undef": true,
   "unused": true,
   "globals": {
-    "angular": false
+    "angular": false,
+    "workItem": false,
+    "createWorkItem": false,
+    "workItemId": false
   }
 }

@@ -6,6 +6,10 @@ angular.module('taskboardApp')
       getAll: function (teamId) {
         return $http.get(workItemServiceUrl + 'team/' + teamId);
       },
+      addToTeam: function (workItemId, teamId) {
+        console.log(workItemServiceUrl + "id/" + workItemId + "/team/" + teamId);
+        return $http.put(workItemServiceUrl + "id/" + workItemId + "/team/" + teamId, null);
+      },
       add: function (workItem) {
         return $http.post(workItemServiceUrl, workItem);
       },
