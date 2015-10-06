@@ -15,6 +15,7 @@ angular.module('taskboardApp')
 			workItemDb.getAll(teamId)
 				.then(function (res) {
 					var workItems = res.data;
+          console.log('items');
 					for (var i = 0; i < workItems.length; i++) {
 						var workItem = workItems[i];
 						if (workItem.status === 'backlog') {
@@ -60,8 +61,7 @@ angular.module('taskboardApp')
 		}
 
 		function addStatusToWorkItem(status, workItemId) {
-			workItemDb.addStatus(status, workItemId)
-				.then(getWorkItems());
+			workItemDb.addStatus(status, workItemId);
 		}
 
 		function updateStatusForWorkItems() {
@@ -71,6 +71,12 @@ angular.module('taskboardApp')
 		$scope.dragControlListeners = {
 			itemMoved: function (event) {
 				console.log(event.dest.index);
+        console.log(event.source.itemScope.workItem.id);
+
+        var status = event.dest.sortableScope.element.context.id;
+        var workItemId = event.source.itemScope.workItem.id;
+        
+        addStatusToWorkItem(status, workItemId);
 			}
 		};
 
