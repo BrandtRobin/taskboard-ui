@@ -15,6 +15,15 @@ angular.module('taskboardApp')
       },
       delete: function (id) {
         return $http.delete(workItemServiceUrl + 'id/' + id);
+      },
+      addIssue: function (issueId, workItemId) {
+        return $http.put(workItemServiceUrl + 'id/' + workItemId + '/issue/' + issueId, null);
+      },
+      addUser: function (userId, workItemId) {
+        return $http.put(workItemServiceUrl + 'id/' + workItemId + '/user/' + userId, null);
+      },
+      addStatus: function (status, workItemId) {
+        return $http.put(workItemServiceUrl + 'id/' + workItemId + '/status', status);
       }
     };
   });

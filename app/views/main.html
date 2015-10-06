@@ -1,5 +1,24 @@
 <h2>Test</h2>
 
-<ul>
-	<li ng-repeat="workItem in workItems">{{ workItem.title + "  " + workItem.description }}</li>
-</ul>
+<div>
+	<h4 class="list-heading">Backlog</h4>
+	<ul data-as-sortable="dragControlListeners" data-ng-model="backlog" class="list-group">
+		<li data-ng-repeat="workItem in backlog" data-as-sortable-item class="list-group-item">
+			<span data-as-sortable-item-handle>
+				{{ workItem.title + "  " + workItem.description }}
+			</span>
+		</li>
+	</ul>
+</div>
+
+<div>
+	<h4 class="list-heading">Done</h4>
+	<ul data-as-sortable="dragControlListeners" data-ng-model="done" class="list-group">
+		<li data-ng-repeat="workItem in done" data-as-sortable-item class="list-group-item">
+			<span data-as-sortable-item-handle>
+				{{ workItem.title + "  " + workItem.description }}
+			</span>
+		</li>
+	</ul>
+</div>
+

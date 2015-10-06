@@ -2,6 +2,9 @@
 angular.module('taskboardApp')
 	.controller('MainCtrl', function ($scope, workItemDb) {
 		var teamId = 1;
+		$scope.backlog = [{}];
+		$scope.done = [{}];
+
 
 		function addWorkItemToTeam(workItemId) {
 			workItemDb.addToTeam(workItemId, teamId)
@@ -11,7 +14,17 @@ angular.module('taskboardApp')
 		function getWorkItems() {
 			workItemDb.getAll(teamId)
 				.then(function (res) {
-					$scope.workItems = res.data;
+					var workItems = res.data;
+					for (var i = 0; i < workItems.length; i++) {
+						var workItem = workItems[i];
+						if (workItem.status === 'backlog') {
+							$scope.backlog.push(workItem);
+						} else if (workItem.status === 'done') {
+							$scope.done.push(workItem);
+						} else {
+
+						}
+					}
 				});
 		}
 
@@ -36,6 +49,31 @@ angular.module('taskboardApp')
 				.then(getWorkItems);
 		}
 
+		function addIssueToWorkItem(issueId, workItemId) {
+			workItemDb.addIssue(issueId, workItemId)
+				.then(getWorkItems());
+		}
+
+		function addUserToWorkItem(userId, workItemId) {
+			workItemDb.addUser(userId, workItemId)
+				.then(getWorkItems());
+		}
+
+		function addStatusToWorkItem(status, workItemId) {
+			workItemDb.addStatus(status, workItemId)
+				.then(getWorkItems());
+		}
+
+		function updateStatusForWorkItems() {
+
+		}
+
+		$scope.dragControlListeners = {
+			itemMoved: function (event) {
+				console.log(event.dest.index);
+			}
+		};
+
 		getWorkItems();
-		createWorkItem("ViSkaÄta Thai", "Det ska bli gott");
+
 	});
