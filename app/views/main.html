@@ -1,24 +1,33 @@
-<h2>Test</h2>
-
-<div>
-	<h4 class="list-heading">Backlog</h4>
-	<ul id="backlog" data-as-sortable="dragControlListeners" data-ng-model="backlog" class="list-group">
-		<li data-ng-repeat="workItem in backlog" data-as-sortable-item class="list-group-item">
-			<span data-as-sortable-item-handle>
-				{{ workItem.title + "  " + workItem.description }}
-			</span>
-		</li>
-	</ul>
+<h2>Add WorkItem</h2>
+<div class="form-group">
+  <form name="workItemForm" class="form-inline" role="form" ng-submit="sendForm()">
+    <div>
+      <input type="text" name="title" ng-model="workItemData.title" class="form-control" placeholder="Title">
+      <input type="text" name="description" ng-model="workItemData.description" class="form-control" placeholder="Description">
+      <button type="submit" ng-onClick="" class="btn btn-default">Submit</button>
+    </div>
+  </form>
+</div>
+<div class="col-md-6 col-sm-12">
+  <h3 class="list-heading">Backlog</h3>
+  <ul id="backlog" data-as-sortable="dragControlListeners" data-ng-model="backlog" class="list-group">
+    <li data-ng-repeat="workItem in backlog" data-as-sortable-item class="list-group-item">
+      <div data-as-sortable-item-handle ng-model="backlog">
+        <h5 class="list-group-item-heading">{{workItem.title}}</h5>
+        <p class="list-group-item-text"> {{ workItem.description }} </p>
+      </div>
+    </li>
+  </ul>
 </div>
 
-<div>
-	<h4 class="list-heading">Done</h4>
-	<ul id="done" data-as-sortable="dragControlListeners" data-ng-model="done" class="list-group">
-		<li data-ng-repeat="workItem in done" data-as-sortable-item class="list-group-item">
-			<span data-as-sortable-item-handle data-ng-model="done">
-				{{ workItem.title + "  " + workItem.description }}
-			</span>
-		</li>
-	</ul>
+<div class="col-md-6 col-sm-12">
+  <h3 class="list-heading">Done</h3>
+  <ul id="done" data-as-sortable="dragControlListeners" data-ng-model="done" class="list-group">
+    <li data-ng-repeat="workItem in done" data-as-sortable-item class="list-group-item">
+      <div data-as-sortable-item-handle ng-model="done">
+        <h5 class="list-group-item-heading">{{workItem.title}}</h5>
+        <p class="list-group-item-text"> {{ workItem.description }} </p>
+      </div>
+    </li>
+  </ul>
 </div>
-

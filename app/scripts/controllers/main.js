@@ -75,7 +75,7 @@ angular.module('taskboardApp')
 
         var status = event.dest.sortableScope.element.context.id;
         var workItemId = event.source.itemScope.workItem.id;
-        
+
         addStatusToWorkItem(status, workItemId);
 			}
 		};
