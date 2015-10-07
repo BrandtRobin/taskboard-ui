@@ -3,8 +3,8 @@
 
 	<form name="workItemForm" class="form-inline" role="form" ng-submit="sendForm()">
 		<div>
-			<input type="text" name="title" ng-model="workItemData.title" class="form-control" placeholder="Title">
-			<input type="text" name="description" ng-model="workItemData.description" class="form-control" placeholder="Description">
+			<input type="text" required name="title" ng-model="workItemData.title" class="form-control" placeholder="Title">
+			<input type="text" required name="description" ng-model="workItemData.description" class="form-control" placeholder="Description">
 			<button type="submit" ng-onClick="" class="btn btn-default">Submit</button>
 		</div>
 	</form>
