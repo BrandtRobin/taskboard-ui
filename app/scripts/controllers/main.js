@@ -77,6 +77,7 @@ angular.module('taskboardApp')
 				var workItemId = event.source.itemScope.workItem.id;
 
 				addStatusToWorkItem(status, workItemId);
+
 			}
 		};
 
