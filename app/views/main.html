@@ -2,7 +2,7 @@
 
 <div>
 	<h4 class="list-heading">Backlog</h4>
-	<ul data-as-sortable="dragControlListeners" data-ng-model="backlog" class="list-group">
+	<ul id="backlog" data-as-sortable="dragControlListeners" data-ng-model="backlog" class="list-group">
 		<li data-ng-repeat="workItem in backlog" data-as-sortable-item class="list-group-item">
 			<span data-as-sortable-item-handle>
 				{{ workItem.title + "  " + workItem.description }}
@@ -13,9 +13,9 @@
 
 <div>
 	<h4 class="list-heading">Done</h4>
-	<ul data-as-sortable="dragControlListeners" data-ng-model="done" class="list-group">
+	<ul id="done" data-as-sortable="dragControlListeners" data-ng-model="done" class="list-group">
 		<li data-ng-repeat="workItem in done" data-as-sortable-item class="list-group-item">
-			<span data-as-sortable-item-handle>
+			<span data-as-sortable-item-handle data-ng-model="done">
 				{{ workItem.title + "  " + workItem.description }}
 			</span>
 		</li>
