@@ -4,6 +4,7 @@ angular.module('taskboardApp')
 		var teamId = 1;
 		$scope.backlog = [{}];
 		$scope.done = [{}];
+		$scope.workItemData = {};
 
 
 		function addWorkItemToTeam(workItemId) {
@@ -14,34 +15,33 @@ angular.module('taskboardApp')
 		function getWorkItems() {
 			workItemDb.getAll(teamId)
 				.then(function (res) {
+					$scope.backlog = [{}];
+					$scope.done = [{}];
 					var workItems = res.data;
-					console.log('items');
 					for (var i = 0; i < workItems.length; i++) {
 						var workItem = workItems[i];
 						if (workItem.status === 'backlog') {
 							$scope.backlog.push(workItem);
 						} else if (workItem.status === 'done') {
 							$scope.done.push(workItem);
-						} else {
-
-						}
+						} else {}
 					}
 				});
 		}
 
 		function createWorkItem(title, description) {
 			var workItemId;
+			var status = 'backlog';
 			var workItem = {
 				title: title,
-				description: description
+				description: description,
+				status: status
 			};
 
 			workItemDb.add(workItem)
 				.then(function (res) {
 					workItemId = res.headers('Location').split('id/').pop();
-					console.log(workItemId + "WOrkItemId");
 					addWorkItemToTeam(workItemId);
-					getWorkItems();
 				});
 		}
 
@@ -64,6 +64,13 @@ angular.module('taskboardApp')
 			workItemDb.addStatus(status, workItemId);
 		}
 
+		$scope.sendForm = function () {
+			$scope.result = angular.copy($scope.workItemData);
+			$scope.formData = {};
+			createWorkItem($scope.result.title, $scope.result.description);
+			$scope.workItemForm.$setPristine(true);
+		};
+
 		$scope.dragControlListeners = {
 			itemMoved: function (event) {
 				var status = event.dest.sortableScope.element.context.id;
@@ -72,6 +79,8 @@ angular.module('taskboardApp')
 				addStatusToWorkItem(status, workItemId);
 			}
 		};
+
+
 
 		getWorkItems();
 
