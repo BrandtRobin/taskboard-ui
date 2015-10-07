@@ -64,13 +64,17 @@ angular.module('taskboardApp')
 				.then(getWorkItems());
 		}
 
-		function updateStatusForWorkItems() {
+		function updateStatusForWorkItem(workItemId) {
+			var workItem1 = $scope.backlog[workItemId];
+			var workItem2 = $scope.done[workItemId];
 
+			workItemDb.addStatus("backlog", workItem1['id']);
+			workItemDb.addStatus("done", workItem2['id']);
 		}
 
 		$scope.dragControlListeners = {
 			itemMoved: function (event) {
-				console.log(event.dest.index);
+				updateStatusForWorkItem(event.dest.index);
 			}
 		};
 
