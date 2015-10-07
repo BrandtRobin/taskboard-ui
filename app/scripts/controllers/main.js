@@ -4,6 +4,7 @@ angular.module('taskboardApp')
 		var teamId = 1;
 		$scope.backlog = [{}];
 		$scope.done = [{}];
+    $scope.active = [{}];
 		$scope.workItemData = {};
 
 
@@ -24,7 +25,9 @@ angular.module('taskboardApp')
 							$scope.backlog.push(workItem);
 						} else if (workItem.status === 'done') {
 							$scope.done.push(workItem);
-						} else {}
+						} else if (workItem.status === 'active'){
+              $scope.active.push(workItem);
+            }
 					}
 				});
 		}

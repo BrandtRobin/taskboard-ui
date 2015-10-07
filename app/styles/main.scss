@@ -1,6 +1,6 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 // bower:scss
-@import "../bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
 .browsehappy {
@@ -92,6 +92,10 @@ body {
 @media screen and (min-width: 768px) {
   .container {
     max-width: 730px;
+  }
+
+  .container {
+    max-width: none;
   }
 
   /* Remove the padding we set earlier */
