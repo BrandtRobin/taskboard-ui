@@ -120,6 +120,10 @@ body {
   }
 }
 
+.footer-text {
+  color: #d1d1e0;
+}
+
 .glyph-button:hover{
   cursor:pointer;
 }
@@ -146,4 +150,16 @@ body {
 
 .li-no-border {
   border:none;
+}
+
+.backlog-header {
+  background-color: #A7DAEB;
+}
+
+.active-header {
+  background-color: #EBB8A7;
+}
+
+.done-header {
+  background-color: #B8EBA7;
 }
