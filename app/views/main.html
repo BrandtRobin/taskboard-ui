@@ -1,13 +1,26 @@
 <h2>Add WorkItem</h2>
-<div class="form-group">
-	<form name="workItemForm" class="form-inline" role="form" ng-submit="sendForm()">
+
+<div>
+	<!--<button href="#" ng-click="toggleModal = true">Show Modal</button>-->
+	<div id="myModal">
 		<div>
-			<input type="text" name="title" ng-model="workItemData.title" class="form-control" placeholder="Title">
-			<input type="text" name="description" ng-model="workItemData.description" class="form-control" placeholder="Description">
-			<button type="submit" ng-onClick="" class="btn btn-default">Submit</button>
+			<div modal-directive="toggleModal" class="form-group" data-backdrop="static">
+				<!-- Modal Content -->
+				<form name="workItemForm" class="form-inline" role="form" ng-submit="sendForm()">
+					<div>
+						<input type="text" name="title" ng-model="workItemData.title" class="form-control" placeholder="Title">
+						<input type="text" name="description" ng-model="workItemData.description" class="form-control" placeholder="Description">
+						<button type="submit" ng-onClick="" class="btn btn-default">Submit</button>
+					</div>
+				</form>
+				<!--<button ng-click="toggleModal = false">Close</button>-->
+				<!-- End Of Modal Content -->
+			</div>
+			
 		</div>
-	</form>
+	</div>	
 </div>
+
 <div class="col-md-6 col-sm-12">
 	<h3 class="list-heading">Backlog</h3>
 	<ul id="backlog" data-as-sortable="dragControlListeners" data-ng-model="backlog" class="list-group">

@@ -5,7 +5,15 @@ angular.module('taskboardApp')
 		$scope.backlog = [{}];
 		$scope.done = [{}];
 		$scope.workItemData = {};
+		$scope.showModalValue = false;
 
+		$scope.showModal = function () {
+			$scope.showModalValue = true;
+		};
+
+		$scope.closeModal = function () {
+			$scope.showModalValue = false;
+		};
 
 		function addWorkItemToTeam(workItemId) {
 			workItemDb.addToTeam(workItemId, teamId)
