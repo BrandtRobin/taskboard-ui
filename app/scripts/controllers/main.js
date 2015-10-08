@@ -81,13 +81,13 @@ angular.module('taskboardApp')
 		};
 
 		$scope.removeBacklog = function (workItem) {
-			$scope.backlog.splice($scope.active.indexOf(workItem), 1);
+			$scope.backlog.splice($scope.backlog.indexOf(workItem), 1);
 
 			deleteWorkItem(workItem.id);
 		};
 
 		$scope.removeDone = function (workItem) {
-			$scope.done.splice($scope.active.indexOf(workItem), 1);
+			$scope.done.splice($scope.done.indexOf(workItem), 1);
 
 			deleteWorkItem(workItem.id);
 		};
