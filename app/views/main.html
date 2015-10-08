@@ -38,7 +38,7 @@
 			<li data-ng-repeat="workItem in backlog" data-as-sortable-item class="list-group-item">
 				<div data-as-sortable-item-handle ng-model="backlog">
 					<h4 class="list-group-item-heading item-title-position">{{workItem.title}}</h4>
-					<a class="glyph-button glyph-position glyph-color" data-toggle="modal" data-target="#myModal">
+					<a class="glyph-button glyph-position glyph-color" ng-click="removeBacklog(workItem)">
 						<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 					</a>
 					<p class="list-group-item-text"> {{ workItem.description }} </p>	
@@ -56,7 +56,7 @@
 			<li data-ng-repeat="workItem in active" data-as-sortable-item class="list-group-item">
 				<div data-as-sortable-item-handle ng-model="active">
 					<h4 class="list-group-item-heading item-title-position">{{workItem.title}}</h4>
-					<a class="glyph-button glyph-position glyph-color  glyph-position" data-toggle="modal" data-target="#myModal">
+					<a class="glyph-button glyph-position glyph-color  glyph-position" ng-click="removeActive(workItem)">
 						<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 					</a>
 					<p class="list-group-item-text"> {{ workItem.description }} </p>
@@ -74,7 +74,7 @@
 			<li data-ng-repeat="workItem in done" data-as-sortable-item class="list-group-item">
 				<div data-as-sortable-item-handle ng-model="done">
 					<h4 class="list-group-item-heading item-title-position">{{workItem.title}}</h4>
-					<a class="glyph-button glyph-position glyph-color glyph-position" data-toggle="modal" data-target="#myModal">
+					<a class="glyph-button glyph-position glyph-color glyph-position" ng-click="removeDone(workItem)">
 						<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 					</a>
 					<p class="list-group-item-text"> {{ workItem.description }} </p>

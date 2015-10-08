@@ -80,6 +80,18 @@ angular.module('taskboardApp')
 			deleteWorkItem(workItem.id);
 		};
 
+		$scope.removeBacklog = function (workItem) {
+			$scope.backlog.splice($scope.active.indexOf(workItem), 1);
+
+			deleteWorkItem(workItem.id);
+		};
+
+		$scope.removeDone = function (workItem) {
+			$scope.done.splice($scope.active.indexOf(workItem), 1);
+
+			deleteWorkItem(workItem.id);
+		};
+
 
 		$scope.dragControlListeners = {
 			itemMoved: function (event) {
