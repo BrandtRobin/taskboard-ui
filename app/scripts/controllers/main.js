@@ -76,20 +76,17 @@ angular.module('taskboardApp')
 
 		$scope.removeActive = function (workItem) {
 			$scope.active.splice($scope.active.indexOf(workItem), 1);
-
-			deleteWorkItem(workItem.id);
+			workItemDb.delete(workItem.id);
 		};
 
 		$scope.removeBacklog = function (workItem) {
-			$scope.backlog.splice($scope.active.indexOf(workItem), 1);
-
-			deleteWorkItem(workItem.id);
+			$scope.backlog.splice($scope.backlog.indexOf(workItem), 1);
+			workItemDb.delete(workItem.id);
 		};
 
 		$scope.removeDone = function (workItem) {
-			$scope.done.splice($scope.active.indexOf(workItem), 1);
-
-			deleteWorkItem(workItem.id);
+			$scope.done.splice($scope.done.indexOf(workItem), 1);
+			workItemDb.delete(workItem.id);
 		};
 
 
