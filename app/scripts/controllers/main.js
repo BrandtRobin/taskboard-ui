@@ -49,8 +49,7 @@ angular.module('taskboardApp')
 		}
 
 		function deleteWorkItem(workItemId) {
-			workItemDb.deleteWorkItem(workItemId)
-				.then(getWorkItems);
+			workItemDb.delete(workItemId);
 		}
 
 		function addIssueToWorkItem(issueId, workItemId) {
@@ -74,6 +73,13 @@ angular.module('taskboardApp')
 			$scope.workItemForm.$setPristine(true);
 		};
 
+    $scope.removeActive = function (workItem) {
+      $scope.active.splice($scope.active.indexOf(workItem), 1);
+
+      deleteWorkItem(workItem.id);
+    };
+
+
 		$scope.dragControlListeners = {
 			itemMoved: function (event) {
 				var status = event.dest.sortableScope.element.context.id;
@@ -83,7 +89,6 @@ angular.module('taskboardApp')
 
 			}
 		};
-
 
 
 		getWorkItems();

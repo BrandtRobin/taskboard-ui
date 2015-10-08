@@ -28,6 +28,10 @@
 			<div data-as-sortable-item-handle ng-model="active">
 				<h4 class="list-group-item-heading">{{workItem.title}}</h4>
 				<p class="list-group-item-text"> {{ workItem.description }} </p>
+        <div class="list-group-item-footer">
+          <span class="glyphicon glyphicon-pencil"></span>
+          <span class="pull-right glyphicon glyphicon-remove" ng-click="removeActive(workItem)"></span>
+        </div>
 			</div>
 		</li>
 	</ul>
