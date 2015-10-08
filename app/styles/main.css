@@ -1,10 +1,10 @@
 /*
-Error: File to import not found or unreadable: ../bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss.
+Error: File to import not found or unreadable: bootstrap-sass-official/assets/stylesheets/_bootstrap.scss.
         on line 3 of main.scss
 
 1: $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 2: // bower:scss
-3: @import "../bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+3: @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 4: // endbower
 5: 
 6: .browsehappy {
@@ -55,4 +55,4 @@ main.scss:3
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: File to import not found or unreadable: ../bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss.\A         on line 3 of main.scss\A \A 1: $icon-font-path: \"../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/\";\A 2: // bower:scss\A 3: @import \"../bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss\";\A 4: // endbower\A 5: \A 6: .browsehappy {\A 7:   margin: 0.2em 0;\A 8:   background: #ccc;"; }
+  content: "Error: File to import not found or unreadable: bootstrap-sass-official/assets/stylesheets/_bootstrap.scss.\A         on line 3 of main.scss\A \A 1: $icon-font-path: \"../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/\";\A 2: // bower:scss\A 3: @import \"bootstrap-sass-official/assets/stylesheets/_bootstrap.scss\";\A 4: // endbower\A 5: \A 6: .browsehappy {\A 7:   margin: 0.2em 0;\A 8:   background: #ccc;"; }
