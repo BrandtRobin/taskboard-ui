@@ -22,7 +22,9 @@
 </div>
 
 <div class="col-md-4 col-sm-12">
-	<h3 class="list-heading">In progress</h3>
+	<h3 class="list-heading">In progress
+    <span class="pull-right glyphicon glyphicon-pencil"></span>
+  </h3>
 	<ul id="active" data-as-sortable="dragControlListeners" data-ng-model="active" class="list-group">
 		<li data-ng-repeat="workItem in active" data-as-sortable-item class="list-group-item">
 			<div data-as-sortable-item-handle ng-model="active">
@@ -30,7 +32,7 @@
 				<p class="list-group-item-text"> {{ workItem.description }} </p>
         <div class="list-group-item-footer">
           <span class="glyphicon glyphicon-pencil"></span>
-          <span class="pull-right glyphicon glyphicon-remove" ng-click="removeActive(workItem)"></span>
+          <span class="pull-right glyphicon glyphicon-trash" ng-click="removeActive(workItem)"></span>
         </div>
 			</div>
 		</li>
