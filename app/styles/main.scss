@@ -118,3 +118,27 @@ body {
 .glyph-button:hover{
   cursor:pointer;
 }
+
+.glyph-position {
+  float: right;
+  position: relative;
+  right: 10px;
+  top: 8px;
+}
+
+.glyph-color {
+  color:black;
+}
+
+.list-group-item-heading {
+  display: inline-block;
+  color:black;
+}
+
+.li-header {
+  background-color: #d1d1e0;
+}
+
+.li-no-border {
+  border:none;
+}
