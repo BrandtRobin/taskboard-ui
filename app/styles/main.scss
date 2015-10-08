@@ -1,6 +1,6 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 // bower:scss
-@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+@import "../bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
 .browsehappy {
@@ -12,7 +12,28 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 body {
   padding: 0;
+  background-color: #003366;
+  color: snow;
 }
+
+.col-md-6 {
+  color: black;
+}
+
+.col-sm-12 {
+  color: black;
+}
+
+.list-heading {
+  color: snow;
+}
+.list-group-item-heading {
+   color: black;
+ }
+.list-group-item-text {
+  color: black;
+}
+
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
@@ -73,6 +94,10 @@ body {
     max-width: 730px;
   }
 
+  .container {
+    max-width: none;
+  }
+
   /* Remove the padding we set earlier */
   .header,
   .marketing,
@@ -88,4 +113,8 @@ body {
   .jumbotron {
     border-bottom: 0;
   }
+}
+
+.glyph-button:hover{
+  cursor:pointer;
 }

@@ -2,8 +2,9 @@
 angular.module('taskboardApp')
 	.controller('MainCtrl', function ($scope, workItemDb) {
 		var teamId = 1;
-		$scope.backlog = [{}];
-		$scope.done = [{}];
+		$scope.backlog = [];
+		$scope.done = [];
+		$scope.active = [];
 		$scope.workItemData = {};
 		$scope.showModalValue = false;
 
@@ -23,8 +24,9 @@ angular.module('taskboardApp')
 		function getWorkItems() {
 			workItemDb.getAll(teamId)
 				.then(function (res) {
-					$scope.backlog = [{}];
-					$scope.done = [{}];
+					$scope.backlog = [];
+					$scope.done = [];
+					$scope.active = [];
 					var workItems = res.data;
 					for (var i = 0; i < workItems.length; i++) {
 						var workItem = workItems[i];
@@ -32,6 +34,8 @@ angular.module('taskboardApp')
 							$scope.backlog.push(workItem);
 						} else if (workItem.status === 'done') {
 							$scope.done.push(workItem);
+						} else if (workItem.status === 'active') {
+							$scope.active.push(workItem);
 						} else {}
 					}
 				});
@@ -85,6 +89,7 @@ angular.module('taskboardApp')
 				var workItemId = event.source.itemScope.workItem.id;
 
 				addStatusToWorkItem(status, workItemId);
+
 			}
 		};
 

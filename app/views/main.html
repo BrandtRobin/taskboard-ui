@@ -1,47 +1,79 @@
-<h2>Add WorkItem</h2>
-
 <div>
-	<!--<button href="#" ng-click="toggleModal = true">Show Modal</button>-->
-	<div id="myModal">
-		<div>
-			<div modal-directive="toggleModal" class="form-group" data-backdrop="static">
-				<!-- Modal Content -->
-				<form name="workItemForm" class="form-inline" role="form" ng-submit="sendForm()">
-					<div>
-						<input type="text" name="title" ng-model="workItemData.title" class="form-control" placeholder="Title">
-						<input type="text" name="description" ng-model="workItemData.description" class="form-control" placeholder="Description">
-						<button type="submit" ng-onClick="" class="btn btn-default">Submit</button>
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="myModalLabel">Add WorkItem</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group" >
+						<form name="workItemForm" class="form-inline" role="form" ng-submit="sendForm()">
+							<div>
+								<input type="text" name="title" ng-model="workItemData.title" class="form-control" placeholder="Title">
+								<input type="text" name="description" ng-model="workItemData.description" class="form-control" placeholder="Description">
+								<button type="submit" ng-onClick="" class="btn btn-default">Submit</button>
+							</div>
+						</form>
 					</div>
-				</form>
-				<!--<button ng-click="toggleModal = false">Close</button>-->
-				<!-- End Of Modal Content -->
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
 			</div>
-			
 		</div>
-	</div>	
-</div>
+	</div>
+	<!-- End Modal -->
 
-<div class="col-md-6 col-sm-12">
-	<h3 class="list-heading">Backlog</h3>
-	<ul id="backlog" data-as-sortable="dragControlListeners" data-ng-model="backlog" class="list-group">
-		<li data-ng-repeat="workItem in backlog" data-as-sortable-item class="list-group-item">
-			<div data-as-sortable-item-handle ng-model="backlog">
-				<h5 class="list-group-item-heading">{{workItem.title}}</h5>
-				<p class="list-group-item-text"> {{ workItem.description }} </p>
-			</div>
-		</li>
-	</ul>
-</div>
+	<!--Backlog -->
+	<div class="col-md-4 col-sm-12">
+		<ul id="backlog" data-as-sortable="dragControlListeners" data-ng-model="backlog" class="list-group">
+			<li class="list-group-item">
+				<h3 class="list-group-item-heading">Backlog</h3>
+				<a class="glyph-button align-right" data-toggle="modal" data-target="#myModal">
+					<span class="glyphicon glyphicon-plus-sign"></span>
+				</a>
+			</li>
+			<li data-ng-repeat="workItem in backlog" data-as-sortable-item class="list-group-item">
+				<div data-as-sortable-item-handle ng-model="backlog">
+					<h4 class="list-group-item-heading">{{workItem.title}}</h4>
+					<p class="list-group-item-text"> {{ workItem.description }} </p>
+					<a class="glyph-button" data-toggle="modal" data-target="#myModal">
+						<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+					</a>					
+				</div>
+			</li>
+		</ul>
+	</div>
 
-<div class="col-md-6 col-sm-12">
-	<h3 class="list-heading">Done</h3>
-	<ul id="done" data-as-sortable="dragControlListeners" data-ng-model="done" class="list-group">
-		<li data-ng-repeat="workItem in done" data-as-sortable-item class="list-group-item">
-			<div data-as-sortable-item-handle ng-model="done">
-				<h5 class="list-group-item-heading">{{workItem.title}}</h5>
-				<p class="list-group-item-text"> {{ workItem.description }} </p>
-			</div>
-		</li>
-	</ul>
-</div>
+	<!-- In Progress / Active -->
+	<div class="col-md-4 col-sm-12">
+		<ul id="active" data-as-sortable="dragControlListeners" data-ng-model="active" class="list-group">
+			<li class="list-group-item">
+				<h3 class="list-group-item-heading">In progress</h3>
+			</li>
+			<li data-ng-repeat="workItem in active" data-as-sortable-item class="list-group-item">
+				<div data-as-sortable-item-handle ng-model="active">
+					<h4 class="list-group-item-heading">{{workItem.title}}</h4>
+					<p class="list-group-item-text"> {{ workItem.description }} </p>
+				</div>
+			</li>
+		</ul>
+	</div>
+
+	<!-- Done -->
+	<div class="col-md-4 col-sm-12">
+		<ul id="done" data-as-sortable="dragControlListeners" data-ng-model="done" class="list-group">
+			<li class="list-group-item">
+				<h3 class="list-group-item-heading">Done</h3>
+			</li>
+			<li data-ng-repeat="workItem in done" data-as-sortable-item class="list-group-item">
+				<div data-as-sortable-item-handle ng-model="done">
+					<h4 class="list-group-item-heading">{{workItem.title}}</h4>
+					<p class="list-group-item-text"> {{ workItem.description }} </p>
+				</div>
+			</li>
+		</ul>
+	</div>
+
 
