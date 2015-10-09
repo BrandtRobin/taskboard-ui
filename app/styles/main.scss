@@ -12,8 +12,8 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 body {
   padding: 0;
-  background-color: #003366;
-  color: snow;
+  background-color: #f0efe7;
+  color: black;
 }
 
 .col-md-6 {
@@ -45,8 +45,10 @@ body {
 
 /* Custom page header */
 .header {
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
   margin-bottom: 10px;
+  margin: 0px 65px;
+  font-family: 'Bree Serif', serif;
 
   /* Make the masthead heading the same height as the navigation */
   h3 {
@@ -60,8 +62,9 @@ body {
 /* Custom page footer */
 .footer {
   padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
+  color: black;
+  border-top: 1px solid rgba(0, 0, 0, 0.25);
+  margin: 0px 65px;
 }
 
 .container-narrow > hr {
@@ -121,12 +124,15 @@ body {
 }
 
 .footer-text {
-  color: #d1d1e0;
+  color: rgba(0, 0, 0, 0.35);
 }
 
 .glyph-button:hover{
   cursor:pointer;
 }
+
+div.todo-list-item:hover .glyphicon-trash {opacity: 1;}
+div.todo-list-item .glyphicon-trash {opacity: 0;}
 
 .glyph-position {
   float: right;

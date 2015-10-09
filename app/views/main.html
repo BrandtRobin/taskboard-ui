@@ -40,7 +40,7 @@
     </a>
   </div>
   <div data-as-sortable="dragControlListeners" data-ng-model="backlog" class="list-group">
-    <div data-ng-repeat="workItem in backlog" data-as-sortable-item class="list-group-item">
+    <div data-ng-repeat="workItem in backlog" data-as-sortable-item class="list-group-item todo-list-item">
       <div data-as-sortable-item-handle>
         <h4 class="list-group-item-heading item-title-position">{{workItem.title}}</h4>
         <a class="glyph-button glyph-position glyph-color" ng-click="removeBacklog(workItem)">
@@ -59,9 +59,9 @@
     <h3 class="list-group-item-heading">In progress</h3>
   </div>
   <div data-as-sortable="dragControlListeners" data-ng-model="active" class="list-group">
-    <div data-ng-repeat="workItem in active" data-as-sortable-item class="list-group-item">
+    <div data-ng-repeat="workItem in active" data-as-sortable-item class="list-group-item todo-list-item">
       <div data-as-sortable-item-handle>
-        <h4 class="list-group-item-heading item-title-position">{{workItem.title}}</h4>
+        <h4 class="list-group-item-heading item-title-position"> {{ workItem.title }} </h4>
         <a class="glyph-button glyph-position glyph-color  glyph-position" ng-click="removeActive(workItem)">
           <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
         </a>
@@ -78,7 +78,7 @@
     <h3 class="list-group-item-heading">Done</h3>
   </div>
   <div data-as-sortable="dragControlListeners" data-ng-model="done" class="list-group">
-    <div data-ng-repeat="workItem in done" data-as-sortable-item class="list-group-item">
+    <div data-ng-repeat="workItem in done" data-as-sortable-item class="list-group-item todo-list-item">
       <div data-as-sortable-item-handle ng-model="done">
         <h4 class="list-group-item-heading item-title-position">{{workItem.title}}</h4>
         <a class="glyph-button glyph-position glyph-color glyph-position" ng-click="removeDone(workItem)">
