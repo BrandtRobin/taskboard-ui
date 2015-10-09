@@ -2,6 +2,7 @@
 angular.module('taskboardApp')
 	.controller('MainCtrl', function ($scope, workItemDb) {
 		var teamId = 1;
+		$scope.editorEnabled = false;
 
 		function addWorkItemToTeam(workItemId) {
 			workItemDb.addToTeam(workItemId, teamId)
@@ -26,6 +27,10 @@ angular.module('taskboardApp')
 						} else {}
 					}
 				});
+		}
+
+		function updateWorkItem(workItem) {
+			workItemDb.update(workItem, workItem.id);
 		}
 
 		function createWorkItem(title, description) {
@@ -89,17 +94,34 @@ angular.module('taskboardApp')
 			workItemDb.delete(workItem.id);
 		};
 
+		$scope.enableEditor = function (titleUpdate, descUpdate) {
+			$scope.editorEnabled = true;
+			$scope.editableTitle = titleUpdate;
+			$scope.editableDescription = descUpdate;
+		};
+
+		$scope.disableEditor = function () {
+			$scope.editorEnabled = false
+		};
+
+		$scope.save = function (workItem, titleUpdate, descUpdate) {
+			var workItemUpdate = workItem;
+			workItemUpdate.title = titleUpdate;
+			workItemUpdate.description = descUpdate;
+			updateWorkItem(workItemUpdate);
+			$scope.disableEditor();
+		};
+
 		$scope.dragControlListeners = {
 			itemMoved: function (event) {
 				var status = event.dest.sortableScope.element.context.title;
 				var workItemId = event.source.itemScope.workItem.id;
-				console.log(status);
-				console.log(workItemId);
 				addStatusToWorkItem(status, workItemId);
 
 			}
 		};
 
 		getWorkItems();
+		$scope.disableEditor();
 
 	});
