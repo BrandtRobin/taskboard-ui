@@ -54,11 +54,11 @@
 </div>
 
 <!-- In Progress / Active -->
-<div title="backlog" class="col-md-4 col-sm-12" data-as-sortable="dragControlListeners" data-ng-model="active">
+<div title="active" class="col-md-4 col-sm-12" data-as-sortable="dragControlListeners" data-ng-model="active">
   <div class="li-header li-no-border list-group-item active-header">
     <h3 class="list-group-item-heading">In progress</h3>
   </div>
-  <div title="backlog" data-as-sortable="dragControlListeners" data-ng-model="active" class="list-group">
+  <div title="active" data-as-sortable="dragControlListeners" data-ng-model="active" class="list-group">
     <div data-ng-repeat="workItem in active" data-as-sortable-item class="list-group-item todo-list-item">
       <div data-as-sortable-item-handle>
         <h4 class="list-group-item-heading item-title-position"> {{ workItem.title }} </h4>

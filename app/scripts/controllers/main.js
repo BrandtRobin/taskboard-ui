@@ -93,7 +93,8 @@ angular.module('taskboardApp')
 			itemMoved: function (event) {
 				var status = event.dest.sortableScope.element.context.title;
 				var workItemId = event.source.itemScope.workItem.id;
-
+				console.log(status);
+				console.log(workItemId);
 				addStatusToWorkItem(status, workItemId);
 
 			}
