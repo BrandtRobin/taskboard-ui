@@ -2,9 +2,6 @@
 angular.module('taskboardApp')
 	.controller('MainCtrl', function ($scope, workItemDb) {
 		var teamId = 1;
-		$scope.backlog = [];
-		$scope.done = [];
-		$scope.active = [];
 
 		function addWorkItemToTeam(workItemId) {
 			workItemDb.addToTeam(workItemId, teamId)
@@ -92,18 +89,15 @@ angular.module('taskboardApp')
 			workItemDb.delete(workItem.id);
 		};
 
-
 		$scope.dragControlListeners = {
 			itemMoved: function (event) {
-				var status = event.dest.sortableScope.element.context.id;
-				console.log(status);
+				var status = event.dest.sortableScope.element.context.title;
 				var workItemId = event.source.itemScope.workItem.id;
 
 				addStatusToWorkItem(status, workItemId);
 
 			}
 		};
-
 
 		getWorkItems();
 
