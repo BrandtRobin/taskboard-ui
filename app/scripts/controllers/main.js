@@ -75,6 +75,7 @@ angular.module('taskboardApp')
         $scope.workItemData.title = "";
         $scope.workItemData.description = "";
       }
+
     };
 
     $scope.removeActive = function (workItem) {
@@ -95,8 +96,13 @@ angular.module('taskboardApp')
 
     $scope.dragControlListeners = {
       itemMoved: function (event) {
+        console.log(event.dest.sortableScope.element.context.parentNode);
         var status = event.dest.sortableScope.element.context.id;
         var workItemId = event.source.itemScope.workItem.id;
+
+        //if(status === ""){
+        //  event.dest.sortableScope.element.context.id.parentNode
+        //}
 
         addStatusToWorkItem(status, workItemId);
 
