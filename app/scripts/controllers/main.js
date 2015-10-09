@@ -72,6 +72,7 @@ angular.module('taskboardApp')
 			$scope.formData = {};
 			createWorkItem($scope.result.title, $scope.result.description);
 			$scope.workItemForm.$setPristine(true);
+
 		};
 
 		$scope.removeActive = function (workItem) {

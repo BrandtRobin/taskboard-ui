@@ -1,87 +1,94 @@
-<div>
-	<!-- Modal -->
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title" id="myModalLabel" >Add a workitem</h4>
-				</div>
-				<div class="modal-body">
-					<div class="form-group">
-						<form name="workItemForm" role="form" class="form-horizontal">
-							<div class="form-group col-sm-10">
-							<input class="modal-title" type="text" name="title" ng-model="workItemData.title" placeholder="Title" required>
-							</div>
-							<div class="form-group col-sm-10">
-								<textarea class="form-control" rows="3" name="description" ng-model="workItemData.description" required placeholder="Description"></textarea>
-							</div>						
-							<div>
-								<button type="submit" ng-click="sendForm()" data-dismiss="modal" class="btn btn-success col-sm-offset-2"><span class="glyphicon glyphicon-ok-sign"></span> Save</button>
-								<button data-dismiss="modal" class="btn btn-danger col-sm-offset-2"><span class="glyphicon glyphicon-remove-sign"></span> Cancel</button>
-							</div>
-						</form>
-					</div>					
-				</div>
-			</div>
-		</div>
-	</div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Add a workitem</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <form name="workItemForm" role="form" class="form-horizontal">
+            <div class="form-group col-sm-10">
+              <input class="modal-title" type="text" name="title" ng-model="workItemData.title" placeholder="Title"
+                     required>
+            </div>
+            <div class="form-group col-sm-10">
+              <textarea class="form-control" rows="3" name="description" ng-model="workItemData.description" required
+                        placeholder="Description"></textarea>
+            </div>
+            <div>
+              <button type="submit" ng-click="sendForm()" class="btn btn-success col-sm-offset-2">
+                <span class="glyphicon glyphicon-ok-sign"></span> Save
+              </button>
+              <button data-dismiss="modal" class="btn btn-danger col-sm-offset-2"><span
+                class="glyphicon glyphicon-remove-sign"></span> Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-	<!--Backlog -->
-	<div class="col-md-4 col-sm-12">
-		<ul id="backlog" data-as-sortable="dragControlListeners" data-ng-model="backlog" class="list-group">
-			<li class="li-header li-no-border list-group-item backlog-header">
-				<h3 class="list-group-item-heading">Backlog</h3>
-				<a type="button"class="glyph-button align-right glyph-position" data-toggle="modal" data-target="#myModal">
-					<span class="glyphicon glyphicon-plus-sign glyph-color"></span>
-				</a>
-			</li>
+<!--Backlog -->
+<div class="col-md-4 col-sm-12">
+  <div class="li-header li-no-border list-group-item backlog-header">
+    <h3 class="list-group-item-heading">Backlog</h3>
+    <a type="button" class="glyph-button align-right glyph-position" data-toggle="modal" data-target="#myModal">
+      <span class="glyphicon glyphicon-plus-sign glyph-color"></span>
+    </a>
+  </div>
+  <div id="backlog" data-as-sortable="dragControlListeners" data-ng-model="backlog" class="list-group">
+    <div data-ng-repeat="workItem in backlog" data-as-sortable-item class="list-group-item">
+      <div data-as-sortable-item-handle>
+        <h4 class="list-group-item-heading item-title-position">{{workItem.title}}</h4>
+        <a class="glyph-button glyph-position glyph-color" ng-click="removeBacklog(workItem)">
+          <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+        </a>
 
-			<li data-ng-repeat="workItem in backlog" data-as-sortable-item class="list-group-item">
-				<div data-as-sortable-item-handle ng-model="backlog">
-					<h4 class="list-group-item-heading item-title-position">{{workItem.title}}</h4>
-					<a class="glyph-button glyph-position glyph-color" ng-click="removeBacklog(workItem)">
-						<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-					</a>
-					<p class="list-group-item-text"> {{ workItem.description }} </p>
-				</div>
-			</li>
-		</ul>
-	</div>
+        <p class="list-group-item-text"> {{ workItem.description }} </p>
+      </div>
+    </div>
+  </div>
+</div>
 
-	<!-- In Progress / Active -->
-	<div class="col-md-4 col-sm-12">
-		<ul id="active" data-as-sortable="dragControlListeners" data-ng-model="active" class="list-group">
-			<li class="li-header li-no-border list-group-item active-header">
-				<h3 class="list-group-item-heading">In progress</h3>
-			</li>
-			<li data-ng-repeat="workItem in active" data-as-sortable-item class="list-group-item">
-				<div data-as-sortable-item-handle ng-model="active">
-					<h4 class="list-group-item-heading item-title-position">{{workItem.title}}</h4>
-					<a class="glyph-button glyph-position glyph-color  glyph-position" ng-click="removeActive(workItem)">
-						<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-					</a>
-					<p class="list-group-item-text"> {{ workItem.description }} </p>
-				</div>
-			</li>
-		</ul>
-	</div>
-  
-	<!-- Done -->
-	<div class="col-md-4 col-sm-12">
-		<ul id="done" data-as-sortable="dragControlListeners" data-ng-model="done" class="list-group">
-			<li class="li-header li-no-border list-group-item done-header">
-				<h3 class="list-group-item-heading">Done</h3>
-			</li>
-			<li data-ng-repeat="workItem in done" data-as-sortable-item class="list-group-item">
-				<div data-as-sortable-item-handle ng-model="done">
-					<h4 class="list-group-item-heading item-title-position">{{workItem.title}}</h4>
-					<a class="glyph-button glyph-position glyph-color glyph-position" ng-click="removeDone(workItem)">
-						<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-					</a>
-					<p class="list-group-item-text"> {{ workItem.description }} </p>
-				</div>
-			</li>
-		</ul>
-	</div>
+<!-- In Progress / Active -->
+<div class="col-md-4 col-sm-12">
+  <div class="li-header li-no-border list-group-item active-header">
+    <h3 class="list-group-item-heading">In progress</h3>
+  </div>
+  <div id="active" data-as-sortable="dragControlListeners" data-ng-model="active" class="list-group">
+    <div data-ng-repeat="workItem in active" data-as-sortable-item class="list-group-item">
+      <div data-as-sortable-item-handle>
+        <h4 class="list-group-item-heading item-title-position">{{workItem.title}}</h4>
+        <a class="glyph-button glyph-position glyph-color  glyph-position" ng-click="removeActive(workItem)">
+          <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+        </a>
+
+        <p class="list-group-item-text"> {{ workItem.description }} </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Done -->
+<div class="col-md-4 col-sm-12">
+  <div class="li-header li-no-border list-group-item done-header">
+    <h3 class="list-group-item-heading">Done</h3>
+  </div>
+  <div id="done" data-as-sortable="dragControlListeners" data-ng-model="done" class="list-group">
+    <div data-ng-repeat="workItem in done" data-as-sortable-item class="list-group-item">
+      <div data-as-sortable-item-handle ng-model="done">
+        <h4 class="list-group-item-heading item-title-position">{{workItem.title}}</h4>
+        <a class="glyph-button glyph-position glyph-color glyph-position" ng-click="removeDone(workItem)">
+          <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+        </a>
+
+        <p class="list-group-item-text"> {{ workItem.description }} </p>
+      </div>
+    </div>
+  </div>
+</div>
 
 
