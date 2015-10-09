@@ -4,33 +4,34 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h4 class="modal-title" id="myModalLabel">Add WorkItem</h4>
+					<h4 class="modal-title" id="myModalLabel" >Add a workitem</h4>
 				</div>
 				<div class="modal-body">
-					<div class="form-group" >
-						<form name="workItemForm" class="form-inline" role="form" ng-submit="sendForm()">
+					<div class="form-group">
+						<form name="workItemForm" role="form" class="form-horizontal">
+							<div class="form-group col-sm-10">
+							<input class="modal-title" type="text" name="title" ng-model="workItemData.title" placeholder="Title" required>
+							</div>
+							<div class="form-group col-sm-10">
+								<textarea class="form-control" rows="3" name="description" ng-model="workItemData.description" required placeholder="Description"></textarea>
+							</div>						
 							<div>
-								<input type="text" name="title" ng-model="workItemData.title" class="form-control" placeholder="Title">
-								<input type="text" name="description" ng-model="workItemData.description" class="form-control" placeholder="Description">
-								<button type="submit" ng-onClick="" class="btn btn-default">Submit</button>
+								<button type="submit" ng-click="sendForm()" data-dismiss="modal" class="btn btn-success col-sm-offset-2"><span class="glyphicon glyphicon-ok-sign"></span> Save</button>
+								<button data-dismiss="modal" class="btn btn-danger col-sm-offset-2"><span class="glyphicon glyphicon-remove-sign"></span> Cancel</button>
 							</div>
 						</form>
-					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>					
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- End Modal -->
 
 	<!--Backlog -->
 	<div class="col-md-4 col-sm-12">
 		<ul id="backlog" data-as-sortable="dragControlListeners" data-ng-model="backlog" class="list-group">
 			<li class="li-header li-no-border list-group-item backlog-header">
 				<h3 class="list-group-item-heading">Backlog</h3>
-				<a class="glyph-button align-right glyph-position" data-toggle="modal" data-target="#myModal">
+				<a type="button"class="glyph-button align-right glyph-position" data-toggle="modal" data-target="#myModal">
 					<span class="glyphicon glyphicon-plus-sign glyph-color"></span>
 				</a>
 			</li>
