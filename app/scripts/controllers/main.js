@@ -2,10 +2,7 @@
 angular.module('taskboardApp')
 	.controller('MainCtrl', function ($scope, workItemDb) {
 		var teamId = 1;
-		$scope.backlog = [];
-		$scope.done = [];
-		$scope.active = [];
-
+    
 		function addWorkItemToTeam(workItemId) {
 			workItemDb.addToTeam(workItemId, teamId)
 				.then(getWorkItems);
