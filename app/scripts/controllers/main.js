@@ -70,11 +70,10 @@ angular.module('taskboardApp')
       if ($scope.workItemForm.$valid) {
         createWorkItem($scope.workItemData.title, $scope.workItemData.description);
 
-        $scope.workItemData.title = "";
-        $scope.workItemData.description = "";
-
         $('#myModal').modal('hide');
 
+        $scope.workItemData.title = "";
+        $scope.workItemData.description = "";
       }
     };
 
