@@ -13,7 +13,7 @@
                      required>
             </div>
             <div class="form-group col-sm-10">
-              <textarea class="form-control" rows="3" name="description" ng-model="workItemData.description" required
+							<textarea class="form-control" rows="3" name="description" ng-model="workItemData.description" required
                         placeholder="Description"></textarea>
             </div>
             <div>
@@ -42,12 +42,30 @@
   <div title="backlog" data-as-sortable="dragControlListeners" data-ng-model="backlog" class="list-group">
     <div data-ng-repeat="workItem in backlog" data-as-sortable-item class="list-group-item todo-list-item">
       <div data-as-sortable-item-handle>
-        <h4 class="list-group-item-heading item-title-position">{{workItem.title}}</h4>
+
+        <div class="info">
+          <div ng-hide="editorEnabled">
+            <h4 class="list-group-item-heading item-title-position">{{workItem.title}}</h4>
+
+            <p class="list-group-item-text"> {{ workItem.description }} </p>
+          </div>
+          <div ng-show="editorEnabled">
+            <input class="modal-title" ng-model="editableTitle" ng-show="editorEnabled">
+            <textarea class="form-control" ng-model="editableDescription" ng-show="editorEnabled"></textarea>
+            <a href="#/" ng-click="save(workItem, editableTitle, editableDescription)">Save</a>
+            <a href="#/" ng-click="disableEditor()">Cancel</a>
+          </div>
+        </div>
+
+
         <a class="glyph-button glyph-position glyph-color" ng-click="removeBacklog(workItem)">
           <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
         </a>
+        <a class="glyph-button glyph-position glyph-pencil-position glyph-color"
+           ng-click="enableEditor(workItem.title, workItem.description)">
+          <span class="glyphicon glyphicon-pencil"></span>
+        </a>
 
-        <p class="list-group-item-text"> {{ workItem.description }} </p>
       </div>
     </div>
   </div>
@@ -61,12 +79,28 @@
   <div title="active" data-as-sortable="dragControlListeners" data-ng-model="active" class="list-group">
     <div data-ng-repeat="workItem in active" data-as-sortable-item class="list-group-item todo-list-item">
       <div data-as-sortable-item-handle>
-        <h4 class="list-group-item-heading item-title-position"> {{ workItem.title }} </h4>
-        <a class="glyph-button glyph-position glyph-color  glyph-position" ng-click="removeActive(workItem)">
+        <div class="info">
+          <div ng-hide="editorEnabled">
+            <h4 class="list-group-item-heading item-title-position">{{workItem.title}}</h4>
+
+            <p class="list-group-item-text"> {{ workItem.description }} </p>
+          </div>
+          <div ng-show="editorEnabled">
+            <input class="modal-title" ng-model="editableTitle" ng-show="editorEnabled">
+            <textarea class="form-control" ng-model="editableDescription" ng-show="editorEnabled"></textarea>
+            <a href="#/" ng-click="save(workItem, editableTitle, editableDescription)">Save</a>
+            <a href="#/" ng-click="disableEditor()">Cancel</a>
+          </div>
+        </div>
+
+
+        <a class="glyph-button glyph-position glyph-color" ng-click="removeBacklog(workItem)">
           <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
         </a>
-
-        <p class="list-group-item-text"> {{ workItem.description }} </p>
+        <a class="glyph-button glyph-position glyph-pencil-position glyph-color"
+           ng-click="enableEditor(workItem.title, workItem.description)">
+          <span class="glyphicon glyphicon-pencil"></span>
+        </a>
       </div>
     </div>
   </div>
@@ -80,12 +114,28 @@
   <div title="done" data-as-sortable="dragControlListeners" data-ng-model="done" class="list-group">
     <div data-ng-repeat="workItem in done" data-as-sortable-item class="list-group-item todo-list-item">
       <div data-as-sortable-item-handle ng-model="done">
-        <h4 class="list-group-item-heading item-title-position">{{workItem.title}}</h4>
-        <a class="glyph-button glyph-position glyph-color glyph-position" ng-click="removeDone(workItem)">
+        <div class="info">
+          <div ng-hide="editorEnabled">
+            <h4 class="list-group-item-heading item-title-position">{{workItem.title}}</h4>
+
+            <p class="list-group-item-text"> {{ workItem.description }} </p>
+          </div>
+          <div ng-show="editorEnabled">
+            <input class="modal-title" ng-model="editableTitle" ng-show="editorEnabled">
+            <textarea class="form-control" ng-model="editableDescription" ng-show="editorEnabled"></textarea>
+            <a href="#/" ng-click="save(workItem, editableTitle, editableDescription)">Save</a>
+            <a href="#/" ng-click="disableEditor()">Cancel</a>
+          </div>
+        </div>
+
+
+        <a class="glyph-button glyph-position glyph-color" ng-click="removeBacklog(workItem)">
           <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
         </a>
-
-        <p class="list-group-item-text"> {{ workItem.description }} </p>
+        <a class="glyph-button glyph-position glyph-pencil-position glyph-color"
+           ng-click="enableEditor(workItem.title, workItem.description)">
+          <span class="glyphicon glyphicon-pencil"></span>
+        </a>
       </div>
     </div>
   </div>

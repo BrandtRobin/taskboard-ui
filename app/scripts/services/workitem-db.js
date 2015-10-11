@@ -23,6 +23,9 @@ angular.module('taskboardApp')
       },
       addStatus: function (status, workItemId) {
         return $http.put(workItemServiceUrl + 'id/' + workItemId + '/status', status);
+      },
+      update: function (workItem, workItemId) {
+        return $http.put(workItemServiceUrl + 'id/' + workItemId, workItem);
       }
     };
   });

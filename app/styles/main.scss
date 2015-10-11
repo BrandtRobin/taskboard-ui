@@ -131,14 +131,18 @@ body {
   cursor:pointer;
 }
 
-div.todo-list-item:hover .glyphicon-trash {opacity: 1;}
-div.todo-list-item .glyphicon-trash {opacity: 0;}
+div.todo-list-item:hover .glyphicon {opacity: 1;}
+div.todo-list-item .glyphicon {opacity: 0;}
 
 .glyph-position {
   float: right;
   position: relative;
   right: 10px;
   top: 8px;
+}
+
+.glyph-pencil-position {
+  margin-right: 10px;
 }
 
 .glyph-color {
@@ -150,12 +154,8 @@ div.todo-list-item .glyphicon-trash {opacity: 0;}
   color:black;
 }
 
-.li-header {
-  background-color: #d1d1e0;
-}
-
-.li-no-border {
-  border:none;
+.info {
+  display: inline-block;
 }
 
 .backlog-header {
