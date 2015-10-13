@@ -11,9 +11,14 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 }
 
 body {
+  padding: 0px;
   padding: 0;
   background-color: #f0efe7;
   color: black;
+}
+
+.container{
+  padding: 10px;
 }
 
 .col-md-6 {
@@ -28,8 +33,8 @@ body {
   color: snow;
 }
 .list-group-item-heading {
-   color: black;
- }
+ color: black;
+}
 .list-group-item-text {
   color: black;
 }
@@ -173,3 +178,4 @@ div.todo-list-item .glyphicon {opacity: 0;}
 .modal-title {
   color: black;
 }
+
