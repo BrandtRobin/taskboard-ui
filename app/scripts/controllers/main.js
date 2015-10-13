@@ -94,8 +94,9 @@ angular.module('taskboardApp')
 			workItemDb.delete(workItem.id);
 		};
 
-		$scope.enableEditor = function (titleUpdate, descUpdate) {
+		$scope.enableEditor = function (workItem, titleUpdate, descUpdate) {
 			$scope.editorEnabled = true;
+			$scope.editableWorkItem = workItem;
 			$scope.editableTitle = titleUpdate;
 			$scope.editableDescription = descUpdate;
 		};
