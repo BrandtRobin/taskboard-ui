@@ -1,145 +1,143 @@
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h4 class="modal-title" id="myModalLabel">Add a workitem</h4>
-			</div>
-			<div class="modal-body">
-				<div class="form-group">
-					<form name="workItemForm" role="form" class="form-horizontal">
-						<div class="form-group col-sm-10">
-							<input class="modal-title" type="text" name="title" ng-model="workItemData.title" placeholder="Title"
-							required>
-						</div>
-						<div class="form-group col-sm-10">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Add a workitem</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <form name="workItemForm" role="form" class="form-horizontal">
+            <div class="form-group col-sm-10">
+              <input class="modal-title" type="text" name="title" ng-model="workItemData.title" placeholder="Title"
+                     required>
+            </div>
+            <div class="form-group col-sm-10">
 							<textarea class="form-control" rows="3" name="description" ng-model="workItemData.description" required
-							placeholder="Description"></textarea>
-						</div>
-						<div class="form-group col-sm-10">
-							<select class="form-control" name="user" ng-model="workItemData.user">
-								<option value>Assign a user</option>
-								<option value="5">Hans</option>
-								<option value="4">Milad</option>
-								<option value="3">Robin</option>
-								<option value="2">Eric</option>
-								<option value="1">Elias</option>
-							</select>
-						</div>
-						<div>
-							<button type="submit" ng-click="sendForm(workItemData)" class="btn btn-success col-sm-offset-2">
-								<span class="glyphicon glyphicon-ok-sign"></span> Save
-							</button>
-							<button data-dismiss="modal" class="btn btn-danger col-sm-offset-2"><span
-								class="glyphicon glyphicon-remove-sign"></span> Cancel
-							</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
+                        placeholder="Description"></textarea>
+            </div>
+            <div class="form-group col-sm-10">
+              <select class="form-control" name="user" ng-model="workItemData.user">
+                <option value>Assign a user</option>
+                <option value="5">Hans</option>
+                <option value="4">Milad</option>
+                <option value="3">Robin</option>
+                <option value="2">Eric</option>
+                <option value="1">Elias</option>
+              </select>
+            </div>
+            <div>
+              <button type="submit" ng-click="sendForm(workItemData)" class="btn btn-success col-sm-offset-2">
+                <span class="glyphicon glyphicon-ok-sign"></span> Save
+              </button>
+              <button data-dismiss="modal" class="btn btn-danger col-sm-offset-2"><span
+                class="glyphicon glyphicon-remove-sign"></span> Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- EditModal -->
 <div class="modal fade" id="editMyModal" tabindex="-1" role="dialog" aria-labelledby="myEditModalLabel">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h4 class="modal-title" id="myEditModalLabel">Edit a WorkItem</h4>
-			</div>
-			<div class="modal-body">
-				<div class="info">
-					<div ng-show="editorEnabled">
-						<div class="form-group col-sm-10">
-							<input class="modal-title form-control" ng-model="editableTitle" ng-show="editorEnabled">
-						</div>
-						<div class="form-group col-sm-10">
-							<textarea class="form-control" ng-model="editableDescription" ng-show="editorEnabled"></textarea>
-						</div>
-						<div>
-							<button data-dismiss="modal" ng-click="save(editableWorkItem, editableTitle, editableDescription)" class="btn btn-success col-sm-offset-2">
-								<span class="glyphicon glyphicon-ok-sign"></span> Save
-							</button>
-							<button data-dismiss="modal" class="btn btn-danger col-sm-offset-2"><span
-								class="glyphicon glyphicon-remove-sign"></span> Cancel
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myEditModalLabel">Edit a WorkItem</h4>
+      </div>
+      <div class="modal-body">
+        <div class="info">
+          <div ng-show="editorEnabled">
+            <div class="form-group col-sm-10">
+              <input class="modal-title form-control" ng-model="editableTitle" ng-show="editorEnabled">
+            </div>
+            <div class="form-group col-sm-10">
+              <textarea class="form-control" ng-model="editableDescription" ng-show="editorEnabled"></textarea>
+            </div>
+            <div>
+              <button data-dismiss="modal" ng-click="save(editableWorkItem, editableTitle, editableDescription)" class="btn btn-success col-sm-offset-2">
+                <span class="glyphicon glyphicon-ok-sign"></span> Save
+              </button>
+              <button data-dismiss="modal" class="btn btn-danger col-sm-offset-2"><span
+                class="glyphicon glyphicon-remove-sign"></span> Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 </div>
 
 <!--Backlog -->
 <div title="backlog" class="col-md-4 col-sm-12" data-as-sortable="dragControlListeners" data-ng-model="backlog">
-	<div class="li-header li-no-border list-group-item backlog-header">
-		<h3 class="list-group-item-heading">Backlog</h3>
-		<a type="button" class="glyph-button align-right glyph-position" data-toggle="modal" data-target="#myModal">
-			<span class="glyphicon glyphicon-plus-sign glyph-color"></span>
-		</a>
-	</div>
-	<div title="backlog" data-as-sortable="dragControlListeners" data-ng-model="backlog" class="list-group">
-		<div data-ng-repeat="workItem in backlog" data-as-sortable-item class="list-group-item todo-list-item">
-			<div data-as-sortable-item-handle>
-				<a class="glyph-button glyph-position glyph-color" ng-click="removeBacklog(workItem)">
-					<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-				</a>
-				<a class="glyph-button glyph-position glyph-pencil-position glyph-color" data-toggle="modal" data-target="#editMyModal" ng-click="enableEditor(workItem, workItem.title, workItem.description)">
-					<span class="glyphicon glyphicon-pencil"></span>
-				</a>
+  <div class="li-header li-no-border list-group-item backlog-header">
+    <h3 class="list-group-item-heading">Backlog</h3>
+    <a type="button" class="glyph-button align-right glyph-position" data-toggle="modal" data-target="#myModal">
+      <span class="glyphicon glyphicon-plus-sign glyph-color"></span>
+    </a>
+  </div>
+  <div title="backlog" data-as-sortable="dragControlListeners" data-ng-model="backlog" class="list-group">
+    <div data-ng-repeat="workItem in backlog" data-as-sortable-item class="list-group-item todo-list-item">
+      <div data-as-sortable-item-handle>
+        <a class="glyph-button glyph-position glyph-color" ng-click="removeBacklog(workItem)">
+          <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+        </a>
+        <a class="glyph-button glyph-position glyph-pencil-position glyph-color" data-toggle="modal" data-target="#editMyModal" ng-click="enableEditor(workItem, workItem.title, workItem.description)">
+          <span class="glyphicon glyphicon-pencil"></span>
+        </a>
 
-				<h4 class="list-group-item-heading item-title-position">{{ workItem.title }}</h4>
-				<p class="list-group-item-text"> {{ workItem.description }} </p>			
-			</div>
-		</div>
-	</div>
+        <h4 class="list-group-item-heading item-title-position">{{ workItem.title }}</h4>
+        <p class="list-group-item-text"> {{ workItem.description }} </p>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- In Progress / Active -->
 <div title="active" class="col-md-4 col-sm-12" data-as-sortable="dragControlListeners" data-ng-model="active">
-	<div class="li-header li-no-border list-group-item active-header">
-		<h3 class="list-group-item-heading">In progress</h3>
-	</div>
-	<div title="active" data-as-sortable="dragControlListeners" data-ng-model="active" class="list-group">
-		<div data-ng-repeat="workItem in active" data-as-sortable-item class="list-group-item todo-list-item">
-			<div data-as-sortable-item-handle>
-				<a class="glyph-button glyph-position glyph-color" ng-click="removeBacklog(workItem)">
-					<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-				</a>
-				<a class="glyph-button glyph-position glyph-pencil-position glyph-color" data-toggle="modal" data-target="#editMyModal" ng-click="enableEditor(workItem, workItem.title, workItem.description)">
-					<span class="glyphicon glyphicon-pencil"></span>
-				</a>
+  <div class="li-header li-no-border list-group-item active-header">
+    <h3 class="list-group-item-heading">In progress</h3>
+  </div>
+  <div title="active" data-as-sortable="dragControlListeners" data-ng-model="active" class="list-group">
+    <div data-ng-repeat="workItem in active" data-as-sortable-item class="list-group-item todo-list-item">
+      <div data-as-sortable-item-handle>
+        <a class="glyph-button glyph-position glyph-color" ng-click="removeBacklog(workItem)">
+          <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+        </a>
+        <a class="glyph-button glyph-position glyph-pencil-position glyph-color" data-toggle="modal" data-target="#editMyModal" ng-click="enableEditor(workItem, workItem.title, workItem.description)">
+          <span class="glyphicon glyphicon-pencil"></span>
+        </a>
 
-				<h4 class="list-group-item-heading item-title-position">{{ workItem.title }}</h4>
-				<p class="list-group-item-text"> {{ workItem.description }} </p>				
-			</div>
-		</div>
-	</div>
+        <h4 class="list-group-item-heading item-title-position">{{ workItem.title }}</h4>
+        <p class="list-group-item-text"> {{ workItem.description }} </p>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- Done -->
 <div title="done" class="col-md-4 col-sm-12" data-as-sortable="dragControlListeners" data-ng-model="done">
-	<div class="li-header li-no-border list-group-item done-header">
-		<h3 class="list-group-item-heading">Done</h3>
-	</div>
-	<div title="done" data-as-sortable="dragControlListeners" data-ng-model="done" class="list-group">
-		<div data-ng-repeat="workItem in done" data-as-sortable-item class="list-group-item todo-list-item">
-			<div data-as-sortable-item-handle ng-model="done">
-				<a class="glyph-button glyph-position glyph-color" ng-click="removeBacklog(workItem)">
-					<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-				</a>
-				<a class="glyph-button glyph-position glyph-pencil-position glyph-color" data-toggle="modal" data-target="#editMyModal" ng-click="enableEditor(workItem, workItem.title, workItem.description)">
-					<span class="glyphicon glyphicon-pencil"></span>
-				</a>
+  <div class="li-header li-no-border list-group-item done-header">
+    <h3 class="list-group-item-heading">Done</h3>
+  </div>
+  <div title="done" data-as-sortable="dragControlListeners" data-ng-model="done" class="list-group">
+    <div data-ng-repeat="workItem in done" data-as-sortable-item class="list-group-item todo-list-item">
+      <div data-as-sortable-item-handle ng-model="done">
+        <a class="glyph-button glyph-position glyph-color" ng-click="removeBacklog(workItem)">
+          <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+        </a>
+        <a class="glyph-button glyph-position glyph-pencil-position glyph-color" data-toggle="modal" data-target="#editMyModal" ng-click="enableEditor(workItem, workItem.title, workItem.description)">
+          <span class="glyphicon glyphicon-pencil"></span>
+        </a>
 
-				<h4 class="list-group-item-heading item-title-position">{{ workItem.title }}</h4>
-				<p class="list-group-item-text"> {{ workItem.description }} </p>				
-			</div>
-		</div>
-	</div>
+        <h4 class="list-group-item-heading item-title-position">{{ workItem.title }}</h4>
+        <p class="list-group-item-text"> {{ workItem.description }} </p>
+      </div>
+    </div>
+  </div>
 </div>
-
-
