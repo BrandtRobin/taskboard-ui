@@ -11,8 +11,33 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 }
 
 body {
-  padding: 0;
+  padding: 0px;
+  background-color: #f0efe7;
+  color: black;
 }
+
+.container{
+  padding: 10px;
+}
+
+.col-md-6 {
+  color: black;
+}
+
+.col-sm-12 {
+  color: black;
+}
+
+.list-heading {
+  color: snow;
+}
+.list-group-item-heading {
+   color: black;
+ }
+.list-group-item-text {
+  color: black;
+}
+
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
@@ -24,8 +49,10 @@ body {
 
 /* Custom page header */
 .header {
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
   margin-bottom: 10px;
+  margin: 0px 65px;
+  font-family: 'Bree Serif', serif;
 
   /* Make the masthead heading the same height as the navigation */
   h3 {
@@ -39,8 +66,9 @@ body {
 /* Custom page footer */
 .footer {
   padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
+  color: black;
+  border-top: 1px solid rgba(0, 0, 0, 0.25);
+  margin: 0px 65px;
 }
 
 .container-narrow > hr {
@@ -73,6 +101,15 @@ body {
     max-width: 730px;
   }
 
+  .container {
+    max-width: none;
+  }
+
+  .glyphicon-remove {
+    float: right;
+    margin-left: 100px;
+  }
+
   /* Remove the padding we set earlier */
   .header,
   .marketing,
@@ -88,4 +125,55 @@ body {
   .jumbotron {
     border-bottom: 0;
   }
+}
+
+.footer-text {
+  color: rgba(0, 0, 0, 0.35);
+}
+
+.glyph-button:hover{
+  cursor:pointer;
+}
+
+div.todo-list-item:hover .glyphicon {opacity: 1;}
+div.todo-list-item .glyphicon {opacity: 0;}
+
+.glyph-position {
+  float: right;
+  position: relative;
+  right: 10px;
+  top: 8px;
+}
+
+.glyph-pencil-position {
+  margin-right: 10px;
+}
+
+.glyph-color {
+  color:black;
+}
+
+.list-group-item-heading {
+  display: inline-block;
+  color:black;
+}
+
+.info {
+  display: inline-block;
+}
+
+.backlog-header {
+  background-color: #A7DAEB;
+}
+
+.active-header {
+  background-color: #EBB8A7;
+}
+
+.done-header {
+  background-color: #B8EBA7;
+}
+
+.modal-title {
+  color: black;
 }

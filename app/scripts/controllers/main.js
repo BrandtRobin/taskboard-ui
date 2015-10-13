@@ -2,9 +2,7 @@
 angular.module('taskboardApp')
 	.controller('MainCtrl', function ($scope, workItemDb) {
 		var teamId = 1;
-		$scope.backlog = [{}];
-		$scope.done = [{}];
-
+		$scope.editorEnabled = false;
 
 		function addWorkItemToTeam(workItemId) {
 			workItemDb.addToTeam(workItemId, teamId)
@@ -14,40 +12,45 @@ angular.module('taskboardApp')
 		function getWorkItems() {
 			workItemDb.getAll(teamId)
 				.then(function (res) {
+					$scope.backlog = [];
+					$scope.done = [];
+					$scope.active = [];
 					var workItems = res.data;
-          console.log('items');
 					for (var i = 0; i < workItems.length; i++) {
 						var workItem = workItems[i];
 						if (workItem.status === 'backlog') {
 							$scope.backlog.push(workItem);
 						} else if (workItem.status === 'done') {
 							$scope.done.push(workItem);
-						} else {
-
-						}
+						} else if (workItem.status === 'active') {
+							$scope.active.push(workItem);
+						} else {}
 					}
 				});
 		}
 
+		function updateWorkItem(workItem) {
+			workItemDb.update(workItem, workItem.id);
+		}
+
 		function createWorkItem(title, description) {
 			var workItemId;
+			var status = 'backlog';
 			var workItem = {
 				title: title,
-				description: description
+				description: description,
+				status: status
 			};
 
 			workItemDb.add(workItem)
 				.then(function (res) {
 					workItemId = res.headers('Location').split('id/').pop();
-					console.log(workItemId + "WOrkItemId");
 					addWorkItemToTeam(workItemId);
-					getWorkItems();
 				});
 		}
 
 		function deleteWorkItem(workItemId) {
-			workItemDb.deleteWorkItem(workItemId)
-				.then(getWorkItems);
+			workItemDb.delete(workItemId);
 		}
 
 		function addIssueToWorkItem(issueId, workItemId) {
@@ -64,22 +67,61 @@ angular.module('taskboardApp')
 			workItemDb.addStatus(status, workItemId);
 		}
 
-		function updateStatusForWorkItems() {
+		$scope.sendForm = function (workItemData) {
+			if ($scope.workItemForm.$valid) {
+				createWorkItem($scope.workItemData.title, $scope.workItemData.description);
 
-		}
+				$('#myModal').modal('hide');
+
+				$scope.workItemData.title = "";
+				$scope.workItemData.description = "";
+			}
+
+		};
+
+		$scope.removeActive = function (workItem) {
+			$scope.active.splice($scope.active.indexOf(workItem), 1);
+			workItemDb.delete(workItem.id);
+		};
+
+		$scope.removeBacklog = function (workItem) {
+			$scope.backlog.splice($scope.backlog.indexOf(workItem), 1);
+			workItemDb.delete(workItem.id);
+		};
+
+		$scope.removeDone = function (workItem) {
+			$scope.done.splice($scope.done.indexOf(workItem), 1);
+			workItemDb.delete(workItem.id);
+		};
+
+		$scope.enableEditor = function (titleUpdate, descUpdate) {
+			$scope.editorEnabled = true;
+			$scope.editableTitle = titleUpdate;
+			$scope.editableDescription = descUpdate;
+		};
+
+		$scope.disableEditor = function () {
+			$scope.editorEnabled = false
+		};
+
+		$scope.save = function (workItem, titleUpdate, descUpdate) {
+			var workItemUpdate = workItem;
+			workItemUpdate.title = titleUpdate;
+			workItemUpdate.description = descUpdate;
+			updateWorkItem(workItemUpdate);
+			$scope.disableEditor();
+		};
 
 		$scope.dragControlListeners = {
 			itemMoved: function (event) {
-				console.log(event.dest.index);
-        console.log(event.source.itemScope.workItem.id);
+				var status = event.dest.sortableScope.element.context.title;
+				var workItemId = event.source.itemScope.workItem.id;
+				addStatusToWorkItem(status, workItemId);
 
-        var status = event.dest.sortableScope.element.context.id;
-        var workItemId = event.source.itemScope.workItem.id;
-        
-        addStatusToWorkItem(status, workItemId);
 			}
 		};
 
 		getWorkItems();
+		$scope.disableEditor();
 
 	});

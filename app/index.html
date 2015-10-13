@@ -9,6 +9,7 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/ng-sortable/dist/ng-sortable.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -21,31 +22,28 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="header">
-      <div class="navbar navbar-default" role="navigation">
+      <div class="header">
         <div class="container">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="#/">TB-ui</a>
-          </div>
+          <h1 class="">REME Taskboard - Ver. 1.0</h1>
         </div>
       </div>
-    </div>
 
-    <div class="container">
-    <div ng-view>
-      
-    </div>
-    </div>
-
-    <div class="footer">
       <div class="container">
-        <p>Created by the REEM team</p>
+        <div ng-view>
+
+        </div>
       </div>
-    </div>
+
+      <div class="footer">
+        <div class="container">
+          <p style="color:snow;"><span class="glyphicon glyphicon-heart"></span> from the REME team</p>
+        </div>
+      </div>
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
+     'use strict';
        !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
        (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
        r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
@@ -67,6 +65,7 @@
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/ng-sortable/dist/ng-sortable.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -76,6 +75,7 @@
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/directives/cardDirective.js"></script>
         <script src="scripts/services/workitem-db.js"></script>
+        <script src="scripts/directives/modaldirective.js"></script>
         <!-- endbuild -->
 </body>
 </html>

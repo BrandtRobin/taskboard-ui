@@ -7,7 +7,6 @@ angular.module('taskboardApp')
         return $http.get(workItemServiceUrl + 'team/' + teamId);
       },
       addToTeam: function (workItemId, teamId) {
-        console.log(workItemServiceUrl + "id/" + workItemId + "/team/" + teamId);
         return $http.put(workItemServiceUrl + "id/" + workItemId + "/team/" + teamId, null);
       },
       add: function (workItem) {
@@ -24,6 +23,9 @@ angular.module('taskboardApp')
       },
       addStatus: function (status, workItemId) {
         return $http.put(workItemServiceUrl + 'id/' + workItemId + '/status', status);
+      },
+      update: function (workItem, workItemId) {
+        return $http.put(workItemServiceUrl + 'id/' + workItemId, workItem);
       }
     };
   });
