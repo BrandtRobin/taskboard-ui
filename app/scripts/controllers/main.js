@@ -4,9 +4,10 @@ angular.module('taskboardApp')
 		var teamId = 1;
 		$scope.editorEnabled = false;
 
-		function addWorkItemToTeam(workItemId) {
+		function addWorkItemToTeam(workItemId, userId) {
 			workItemDb.addToTeam(workItemId, teamId)
 				.then(getWorkItems);
+
 		}
 
 		function getWorkItems() {
@@ -33,19 +34,21 @@ angular.module('taskboardApp')
 			workItemDb.update(workItem, workItem.id);
 		}
 
-		function createWorkItem(title, description) {
+		function createWorkItem(title, description, userId) {
 			var workItemId;
 			var status = 'backlog';
 			var workItem = {
 				title: title,
 				description: description,
-				status: status
+				status: status,
 			};
+
+			console.log(userId);
 
 			workItemDb.add(workItem)
 				.then(function (res) {
 					workItemId = res.headers('Location').split('id/').pop();
-					addWorkItemToTeam(workItemId);
+					addUserToWorkItem(userId, workItemId);
 				});
 		}
 
@@ -59,8 +62,8 @@ angular.module('taskboardApp')
 		}
 
 		function addUserToWorkItem(userId, workItemId) {
-			workItemDb.addUser(userId, workItemId)
-				.then(getWorkItems());
+			workItemDb.addUser(userId, workItemId);
+			addWorkItemToTeam(workItemId, userId);
 		}
 
 		function addStatusToWorkItem(status, workItemId) {
@@ -69,7 +72,8 @@ angular.module('taskboardApp')
 
 		$scope.sendForm = function (workItemData) {
 			if ($scope.workItemForm.$valid) {
-				createWorkItem($scope.workItemData.title, $scope.workItemData.description);
+				console.log(workItemData);
+				createWorkItem($scope.workItemData.title, $scope.workItemData.description, $scope.workItemData.user);
 
 				$('#myModal').modal('hide');
 
@@ -123,6 +127,4 @@ angular.module('taskboardApp')
 		};
 
 		getWorkItems();
-		$scope.disableEditor();
-
 	});

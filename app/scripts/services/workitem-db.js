@@ -19,6 +19,7 @@ angular.module('taskboardApp')
         return $http.put(workItemServiceUrl + 'id/' + workItemId + '/issue/' + issueId, null);
       },
       addUser: function (userId, workItemId) {
+        console.log(workItemServiceUrl + 'id/' + workItemId + '/user/' + userId);
         return $http.put(workItemServiceUrl + 'id/' + workItemId + '/user/' + userId, null);
       },
       addStatus: function (status, workItemId) {
