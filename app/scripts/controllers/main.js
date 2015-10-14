@@ -49,7 +49,7 @@ angular.module('taskboardApp')
       workItemDb.add(workItem)
         .then(function (res) {
           workItemId = res.headers('Location').split('id/').pop();
-          addUserToWorkItem(userId, workItemId);
+            addUserToWorkItem(userId, workItemId);
         });
     }
 
@@ -63,7 +63,9 @@ angular.module('taskboardApp')
     }
 
     function addUserToWorkItem(userId, workItemId) {
-      workItemDb.addUser(userId, workItemId);
+      if (userId != null) {
+        workItemDb.addUser(userId, workItemId);
+      }
       addWorkItemToTeam(workItemId, userId);
     }
 
