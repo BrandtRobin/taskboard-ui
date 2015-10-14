@@ -91,7 +91,7 @@
 					<span class="glyphicon glyphicon-pencil"></span>
 				</a>
 
-				<h4 class="list-group-item-heading item-title-position">{{ workItem.title }}</h4>
+				<h4 class="list-group-item-heading item-title-position">{{ workItem.title + " (" + workItem.user.firstname + ")"}}</h4>
 				<p class="list-group-item-text"> {{ workItem.description }} </p>			
 			</div>
 		</div>
@@ -106,14 +106,14 @@
 	<div title="active" data-as-sortable="dragControlListeners" data-ng-model="active" class="list-group">
 		<div data-ng-repeat="workItem in active" data-as-sortable-item class="list-group-item todo-list-item">
 			<div data-as-sortable-item-handle>
-				<a class="glyph-button glyph-position glyph-color" ng-click="removeBacklog(workItem)">
+				<a class="glyph-button glyph-position glyph-color" ng-click="removeActive(workItem)">
 					<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 				</a>
 				<a class="glyph-button glyph-position glyph-pencil-position glyph-color" data-toggle="modal" data-target="#editMyModal" ng-click="enableEditor(workItem, workItem.title, workItem.description)">
 					<span class="glyphicon glyphicon-pencil"></span>
 				</a>
 
-				<h4 class="list-group-item-heading item-title-position">{{ workItem.title }}</h4>
+				<h4 class="list-group-item-heading item-title-position">{{ workItem.title + " (" + workItem.user.firstname + ")"}}</h4>
 				<p class="list-group-item-text"> {{ workItem.description }} </p>				
 			</div>
 		</div>
@@ -128,14 +128,14 @@
 	<div title="done" data-as-sortable="dragControlListeners" data-ng-model="done" class="list-group">
 		<div data-ng-repeat="workItem in done" data-as-sortable-item class="list-group-item todo-list-item">
 			<div data-as-sortable-item-handle ng-model="done">
-				<a class="glyph-button glyph-position glyph-color" ng-click="removeBacklog(workItem)">
+				<a class="glyph-button glyph-position glyph-color" ng-click="removeDone(workItem)">
 					<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 				</a>
 				<a class="glyph-button glyph-position glyph-pencil-position glyph-color" data-toggle="modal" data-target="#editMyModal" ng-click="enableEditor(workItem, workItem.title, workItem.description)">
 					<span class="glyphicon glyphicon-pencil"></span>
 				</a>
 
-				<h4 class="list-group-item-heading item-title-position">{{ workItem.title }}</h4>
+				<h4 class="list-group-item-heading item-title-position">{{ workItem.title + " (" + workItem.user.firstname + ")"}}</h4>
 				<p class="list-group-item-text"> {{ workItem.description }} </p>				
 			</div>
 		</div>
