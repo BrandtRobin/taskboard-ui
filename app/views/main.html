@@ -17,7 +17,7 @@
                         placeholder="Description"></textarea>
             </div>
             <div class="form-group col-sm-10" ng-controller="UserCtrl">
-              <select class="form-control" name="user" ng-model="workItemData.user" ng-options="user.id as user.firstname + ' ' + user.lastname for user in users track by user.id">
+              <select class="form-control" name="user" ng-model="workItemData.user" ng-options="user.id as user.firstname + ' ' + user.lastname for user in users">
                 <option value>Assign a user</option>
               </select>
             </div>
