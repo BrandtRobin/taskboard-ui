@@ -64,9 +64,11 @@ angular.module('taskboardApp')
 
     function addUserToWorkItem(userId, workItemId) {
       if (userId != null) {
-        workItemDb.addUser(userId, workItemId);
+        workItemDb.addUser(userId, workItemId)
+          .then(getWorkItems);
+      } else {
+        addWorkItemToTeam(workItemId, userId);
       }
-      addWorkItemToTeam(workItemId, userId);
     }
 
     function addStatusToWorkItem(status, workItemId) {
