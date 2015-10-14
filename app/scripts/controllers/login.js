@@ -8,10 +8,12 @@
  * Controller of the taskboardApp
  */
 angular.module('taskboardApp')
-  .controller('LoginctrlCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+	.controller('LoginCtrl', ['$scope', 'authFactory', function LoginCtrl($scope, authFactory) {
+		$scope.login = function (user) {
+			authFactory.login(user).success(function (data) {        
+				authFactory.setAuthData(data);            // Redirect etc.
+				       
+			}).error(function () {          // Error handling
+				       });
+		};
+	}])

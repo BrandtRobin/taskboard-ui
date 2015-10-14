@@ -8,16 +8,15 @@
  * Factory in the taskboardApp.
  */
 angular.module('taskboardApp')
-  .factory('authFactory', function () {
-    // Service logic
-    // ...
+  .factory('authFactory', ['$rootScope', '$http', function ($rootScope, $http) {
 
-    var meaningOfLife = 42;
-
-    // Public API here
-    return {
-      someMethod: function () {
-        return meaningOfLife;
-      }
+    var authFactory = {
+      authData: undefined
     };
-  });
+
+    authFactory.login = function (user) {
+      return $http.post('http://localhost/api/auth/', user);
+    };
+
+    return authFactory;
+  }])
