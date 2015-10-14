@@ -5,7 +5,7 @@ angular.module('taskboardApp')
 
     $scope.editorEnabled = false;
 
-    function addWorkItemToTeam(workItemId, userId) {
+    function addWorkItemToTeam(workItemId) {
       workItemDb.addToTeam(workItemId, teamId)
         .then(getWorkItems);
 
@@ -63,8 +63,13 @@ angular.module('taskboardApp')
     }
 
     function addUserToWorkItem(userId, workItemId) {
-      workItemDb.addUser(userId, workItemId);
-      addWorkItemToTeam(workItemId, userId);
+      if (userId != null) {
+        workItemDb.addUser(userId, workItemId)
+          .then(getWorkItems);
+      } else {
+        addWorkItemToTeam(workItemId);
+      }
+
     }
 
     function addStatusToWorkItem(status, workItemId) {
