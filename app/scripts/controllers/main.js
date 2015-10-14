@@ -2,6 +2,7 @@
 angular.module('taskboardApp')
   .controller('MainCtrl', function ($scope, workItemDb) {
     var teamId = 1;
+
     $scope.editorEnabled = false;
 
     function addWorkItemToTeam(workItemId, userId) {
@@ -40,7 +41,7 @@ angular.module('taskboardApp')
       var workItem = {
         title: title,
         description: description,
-        status: status,
+        status: status
       };
 
       console.log(userId);
@@ -72,7 +73,8 @@ angular.module('taskboardApp')
 
     $scope.sendForm = function (workItemData) {
       if ($scope.workItemForm.$valid) {
-        console.log(workItemData);
+        //console.log(workItemData.userId);
+        console.log($scope.workItemData.user);
         createWorkItem($scope.workItemData.title, $scope.workItemData.description, $scope.workItemData.user);
 
         $('#myModal').modal('hide');

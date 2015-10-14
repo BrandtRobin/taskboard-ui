@@ -16,14 +16,9 @@
 							<textarea class="form-control" rows="3" name="description" ng-model="workItemData.description" required
                         placeholder="Description"></textarea>
             </div>
-            <div class="form-group col-sm-10">
-              <select class="form-control" name="user" ng-model="workItemData.user">
+            <div class="form-group col-sm-10" ng-controller="UserCtrl">
+              <select class="form-control" name="user" ng-model="workItemData.user" ng-options="user.id as user.firstname + ' ' + user.lastname for user in users track by user.id">
                 <option value>Assign a user</option>
-                <option value="5">Hans</option>
-                <option value="4">Milad</option>
-                <option value="3">Robin</option>
-                <option value="2">Eric</option>
-                <option value="1">Elias</option>
               </select>
             </div>
             <div>
