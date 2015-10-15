@@ -16,4 +16,4 @@ angular.module('taskboardApp')
 			}).error(function () {          // Error handling
 				       });
 		};
-	}])
+	}]);

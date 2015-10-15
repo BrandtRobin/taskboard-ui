@@ -19,4 +19,4 @@ angular.module('taskboardApp')
     };
 
     return authFactory;
-  }])
+  }]);
