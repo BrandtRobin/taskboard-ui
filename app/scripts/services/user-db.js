@@ -5,6 +5,9 @@ angular.module('taskboardApp')
     return {
       getUsersByTeamId: function (teamId) {
         return $http.get(userServiceUrl + 'team/' + teamId);
+      },
+      createUser: function(user) {
+        return $http.post(userServiceUrl);
       }
     };
   });

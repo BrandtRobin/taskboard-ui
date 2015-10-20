@@ -2,7 +2,7 @@
 <div class="col-md-4">
   <div class="login">
     <div class="heading">
-      <h2>Sign in</h2>
+      <h2>Create new user</h2>
 
       <form name="userForm" role="form" class="form-horizontal">
 
@@ -13,17 +13,25 @@
                                                                                   aria-hidden="true"></span></span>
               <input type="text" class="form-control" ng-model="user.username" placeholder="Username" required>
             </div>
+            <div class="form-group input-group input-group-lg">
+              <span class="input-group-addon" style="background-color:snow"><span class="glyphicon glyphicon-user"
+                                                                                  aria-hidden="true"></span></span>
+              <input type="text" class="form-control" ng-model="user.firstname" placeholder="Firstname" required>
+            </div>
+            <div class="form-group input-group input-group-lg">
+              <span class="input-group-addon" style="background-color:snow"><span class="glyphicon glyphicon-user"
+                                                                                  aria-hidden="true"></span></span>
+              <input type="text" class="form-control" ng-model="user.lastname" placeholder="Lastname" required>
+            </div>
 
             <div class="form-group input-group input-group-lg">
               <span class="input-group-addon" style="background-color:snow"><span class="glyphicon glyphicon-lock"
                                                                                   aria-hidden="true"></span></span>
               <input type="password" class="form-control" ng-model="user.password" placeholder="Password" required>
             </div>
-            <button type="submit" ng-click="login(user)" class="btn btn-default btn-success float">Login</button>
-            <span id="login-error-msg">{{error}}</span>
+
             <div>
-              <!--<a type="button" href="#/new-user.html" class="btn btn-default btn-success float">New User</a>-->
-              <button type="submit" ng-click="newUserPage()" class="btn btn-default btn-success float">New User</button>
+              <button type="submit" ng-click="newUser(user)" class="btn btn-default btn-success float">Sign up</button>
             </div>
           </div>
         </div>

@@ -77,8 +77,6 @@ angular.module('taskboardApp')
 
     $scope.sendForm = function (workItemData) {
       if ($scope.workItemForm.$valid) {
-        //console.log(workItemData.userId);
-        console.log($scope.workItemData.user);
         createWorkItem($scope.workItemData.title, $scope.workItemData.description, $scope.workItemData.user);
 
         $('#myModal').modal('hide');

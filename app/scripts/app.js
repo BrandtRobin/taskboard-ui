@@ -18,19 +18,38 @@ angular
     'ngTouch',
     'as.sortable'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, $httpProvider) {
     $routeProvider
       .when('/login', {
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl',
-        controllerAs: 'main'
+        controllerAs: 'login'
       })
       .when('/main', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
+      .when('/team', {
+        templateUrl: 'views/team.html',
+        controller: 'TeamCtrl',
+        controllerAs: 'team'
+      })
+      .when('/new-user', {
+        templateUrl: 'views/new-user.html',
+        controller: 'LoginCtrl',
+        controllerAs: 'login'
+      })
       .otherwise({
         redirectTo: '/login'
       });
+      $httpProvider.defaults.headers.common['username'] = window.localStorage.getItem("username");
+      $httpProvider.interceptors.push(function() {
+        return {
+          request: function(req) {
+            req.headers.Authorization = window.localStorage.getItem("token");
+            return req;
+          }
+        }
+      })
   });

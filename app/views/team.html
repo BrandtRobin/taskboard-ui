@@ -1,0 +1,23 @@
+<div class="col-md-4"></div>
+<div class="col-md-4">
+  <div class="login">
+    <div class="heading">
+      <h2>Create new team</h2>
+
+      <form name="teamForm" role="form" class="form-horizontal">
+
+        <div class="row">
+          <div class="login-field" ng-controller="TeamCtrl">
+            <div class="form-group input-group input-group-lg">
+              <span class="input-group-addon" style="background-color:snow"><span class="glyphicon glyphicon-user"
+                                                                                  aria-hidden="true"></span></span>
+              <input type="text" class="form-control" ng-model="team.teamName" placeholder="Team name" required>
+            </div>
+
+            <button type="submit" ng-click="newTeam(team)" class="btn btn-default btn-success float">Create team</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
