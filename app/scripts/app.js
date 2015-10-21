@@ -43,7 +43,6 @@ angular
       .otherwise({
         redirectTo: '/login'
       });
-      $httpProvider.defaults.headers.common['username'] = window.localStorage.getItem("username");
       $httpProvider.interceptors.push(function() {
         return {
           request: function(req) {

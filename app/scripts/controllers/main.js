@@ -1,7 +1,7 @@
 'use strict';
 angular.module('taskboardApp')
   .controller('MainCtrl', function ($scope, workItemDb) {
-    var teamId = 1;
+    var teamId = window.localStorage.getItem("teamId");
 
     $scope.editorEnabled = false;
 
@@ -43,8 +43,6 @@ angular.module('taskboardApp')
         description: description,
         status: status
       };
-
-      console.log(userId);
 
       workItemDb.add(workItem)
         .then(function (res) {

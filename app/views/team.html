@@ -1,4 +1,24 @@
 <div class="col-md-4"></div>
+<div class="col-md-4"></div>
+  <!--<div ng-controller="TeamCtrl" title="teams" class="col-md-4 col-sm-12" data-ng-model="team">-->
+    <div class="li-header li-no-border list-group-item done-header">
+      <h3 class="list-group-item-heading">Teams</h3>
+    </div>
+    <div ng-controller="TeamCtrl" title="teams" data-ng-model="team" class="list-group">
+      <div data-ng-repeat="team in myTeams" class="list-group-item todo-list-item">
+        <div  ng-model="team">
+          <a class="glyph-button glyph-position glyph-color">
+            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+          </a>
+
+          <h4 class="list-group-item-heading item-title-position" ng-click="mainPage()">{{ team.teamName }}</h4>
+
+        </div>
+      </div>
+    </div>
+  <!--</div>-->
+
+<div class="col-md-1"></div>
 <div class="col-md-4">
   <div class="login">
     <div class="heading">
@@ -9,12 +29,36 @@
         <div class="row">
           <div class="login-field" ng-controller="TeamCtrl">
             <div class="form-group input-group input-group-lg">
-              <span class="input-group-addon" style="background-color:snow"><span class="glyphicon glyphicon-user"
+              <span class="input-group-addon" style="background-color:snow" ><span class="glyphicon glyphicon-user"
                                                                                   aria-hidden="true"></span></span>
               <input type="text" class="form-control" ng-model="team.teamName" placeholder="Team name" required>
             </div>
 
             <button type="submit" ng-click="newTeam(team)" class="btn btn-default btn-success float">Create team</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-1"></div>
+<div class="col-md-4">
+  <div class="login">
+    <div class="heading">
+      <h2>Add user</h2>
+
+      <form name="addUser" role="form" class="form-horizontal">
+
+        <div class="row">
+          <div class="login-field" ng-controller="TeamCtrl">
+            <div class="form-group input-group input-group-lg">
+              <span class="input-group-addon" style="background-color:snow"><span class="glyphicon glyphicon-user"
+                                                                                  aria-hidden="true"></span></span>
+              <input type="text" class="form-control" ng-model="username" placeholder="Username" required>
+            </div>
+
+            <button type="submit" ng-click="addUserToMyTeam(username)" class="btn btn-default btn-success float">Add user</button>
           </div>
         </div>
       </form>

@@ -8,6 +8,12 @@ angular.module('taskboardApp')
       },
       createUser: function(user) {
         return $http.post(userServiceUrl);
+      },
+      getUserByUsername: function(username) {
+        return $http.get(userServiceUrl + 'username/' +  username);
+      },
+      findUsersByTeam: function(teamName) {
+        return $http.get(userServiceUrl + 'teamname/' + teamName);
       }
     };
   });

@@ -8,18 +8,23 @@
  * Controller of the taskboardApp
  */
 angular.module('taskboardApp')
-	.controller('LoginCtrl', function ($scope, authFactory) {
+	.controller('LoginCtrl', function ($scope, authFactory, userDb) {
 
+    window.localStorage.clear();
     $scope.error = '';
 		$scope.login = function (user) {
       if ($scope.userForm.$valid) {
         authFactory.login(user).success(function (data) {
-          $scope.user = user.username;
-          $scope.token = data.token;
           window.localStorage.setItem("token", data.token);
           window.localStorage.setItem("username", user.username);
-          console.log(data.token);
           window.location.href = '#/team';
+          userDb.getUserByUsername(window.localStorage.getItem("username"))
+            .then(function(res) {
+              if (res.data.team !== undefined) {
+                window.localStorage.setItem("teamId", res.data.team.id);
+              }
+
+            });
 
 
         }).error(function () {
@@ -31,9 +36,8 @@ angular.module('taskboardApp')
     $scope.newUser = function (user) {
       if ($scope.userForm.$valid) {
         authFactory.createUser(user).success(function (data) {
-          console.log(data);
           window.location.href = '#/login';
-        })
+        });
       }
     };
 
