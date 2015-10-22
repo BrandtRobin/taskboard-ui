@@ -21,11 +21,11 @@ angular.module('taskboardApp')
     };
 
     authFactory.createUser = function (user) {
-      return $http.post(loginServiceUrl + "new-user", user)
+      return $http.post(loginServiceUrl + "new-user", user);
     };
 
     authFactory.createTeam = function (team) {
-      return $http.post(loginServiceUrl + "new-team", team)
+      return $http.post(loginServiceUrl + "new-team", team);
     };
 
     return authFactory;

@@ -17,13 +17,12 @@ angular.module('taskboardApp')
         authFactory.login(user).success(function (data) {
           window.localStorage.setItem("token", data.token);
           window.localStorage.setItem("username", user.username);
-          window.location.href = '#/team';
           userDb.getUserByUsername(window.localStorage.getItem("username"))
             .then(function(res) {
               if (res.data.team !== undefined) {
                 window.localStorage.setItem("teamId", res.data.team.id);
               }
-
+              window.location.href = '#/team';
             });
 
 
@@ -43,6 +42,6 @@ angular.module('taskboardApp')
 
     $scope.newUserPage = function () {
       window.location.href = '#/new-user';
-    }
+    };
 
 	});

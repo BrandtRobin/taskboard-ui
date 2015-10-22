@@ -75,7 +75,7 @@ angular.module('taskboardApp')
 
     $scope.sendForm = function (workItemData) {
       if ($scope.workItemForm.$valid) {
-        createWorkItem($scope.workItemData.title, $scope.workItemData.description, $scope.workItemData.user);
+        createWorkItem(workItemData.title, workItemData.description, workItemData.user);
 
         $('#myModal').modal('hide');
 
@@ -108,7 +108,7 @@ angular.module('taskboardApp')
     };
 
     $scope.disableEditor = function () {
-      $scope.editorEnabled = false
+      $scope.editorEnabled = false;
     };
 
     $scope.save = function (workItem, titleUpdate, descUpdate) {

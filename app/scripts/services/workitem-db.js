@@ -2,6 +2,7 @@
 angular.module('taskboardApp')
   .factory('workItemDb', function ($http) {
     var workItemServiceUrl = "http://localhost:8080/web-service/workitems/";
+
     return {
       getAll: function (teamId) {
         return $http.get(workItemServiceUrl + 'team/' + teamId);

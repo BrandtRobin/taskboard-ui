@@ -40,7 +40,6 @@ angular.module('taskboardApp')
         .then(function (res) {
           $scope.myTeams = [];
           $scope.myTeams.push(res.data);
-          console.log("TEAM BY ID :" + res.data.id);
         });
     }
 

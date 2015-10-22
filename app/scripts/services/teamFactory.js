@@ -2,9 +2,10 @@
 angular.module('taskboardApp')
   .factory('teamFactory', function ($http) {
     var teamServiceUrl = "http://localhost:8080/web-service/teams/";
+
     return {
       addUserToTeam: function (teamId, username) {
-        return $http.put(teamServiceUrl + 'id/' + teamId + 'username/' + username);
+        return $http.put(teamServiceUrl + 'id/' + teamId + '/username/' + username);
       },
       addUserToTeamByTeamName: function (teamId, username) {
         return $http.put(teamServiceUrl + 'id/' + teamId + '/username/' + username);

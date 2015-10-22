@@ -49,6 +49,6 @@ angular
             req.headers.Authorization = window.localStorage.getItem("token");
             return req;
           }
-        }
-      })
+        };
+      });
   });
